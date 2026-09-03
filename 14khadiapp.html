@@ -13,7 +13,6 @@
   />
 
   <style>
-
     body {
       min-height: 100vh;
       background: #f4f7fb;
@@ -33,11 +32,10 @@
     }
 
     /* HEADER */
-
     .app-header {
       background: linear-gradient(135deg, #0d6efd, #6610f2);
       color: #fff;
-      padding: 28px 20px;
+      padding: 25px 20px;
       text-align: center;
     }
 
@@ -52,25 +50,25 @@
       opacity: 0.9;
     }
 
-    /* MENU */
-
+    /* NAV */
     .main-menu {
       background: #fff;
       padding: 12px;
-      border-bottom: 1px solid #e9ecef;
+      border-bottom: 1px solid #eee;
     }
 
-    .main-menu .btn {
+    .menu-btn {
       border-radius: 12px;
       font-weight: 700;
+      min-height: 46px;
     }
 
-    .main-menu .btn.active {
-      box-shadow: 0 4px 12px rgba(13, 110, 253, .25);
+    .menu-btn.active {
+      background: #0d6efd;
+      color: #fff;
     }
 
     /* SCORE */
-
     .score-card {
       background: #fff;
       border: 1px solid #e9ecef;
@@ -89,11 +87,16 @@
       font-weight: 700;
     }
 
-    /* QUESTION */
+    /* SETTINGS */
+    .settings-row .form-select {
+      border-radius: 12px;
+      min-height: 46px;
+    }
 
+    /* QUESTION */
     .question-box {
       text-align: center;
-      padding: 15px 10px 25px;
+      padding: 15px 10px 20px;
     }
 
     .question-label {
@@ -106,18 +109,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      width: 150px;
-      height: 150px;
-
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-
       background: #eef4ff;
       color: #0d6efd;
-
-      font-size: 75px;
+      font-size: 78px;
       font-weight: 700;
-
       box-shadow: inset 0 0 0 8px #fff;
     }
 
@@ -127,8 +125,32 @@
       font-size: 15px;
     }
 
-    /* OPTIONS */
+    /* SPEAK BUTTON */
+    .speak-btn {
+      border-radius: 50px;
+      font-weight: 700;
+      padding: 10px 22px;
+    }
 
+    /* TYPING */
+    .answer-input {
+      max-width: 500px;
+      margin: auto;
+      min-height: 58px;
+      border-radius: 14px;
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .check-btn {
+      border-radius: 14px;
+      min-height: 52px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* OPTIONS */
     .option-btn {
       width: 100%;
       min-height: 72px;
@@ -152,11 +174,9 @@
       height: 30px;
       align-items: center;
       justify-content: center;
-
       border-radius: 50%;
       background: #e9ecef;
       color: #495057;
-
       font-size: 15px;
       margin-right: 8px;
       vertical-align: middle;
@@ -175,14 +195,11 @@
     }
 
     /* FEEDBACK */
-
     .feedback {
       min-height: 55px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 20px;
       font-weight: 600;
       text-align: center;
@@ -197,7 +214,6 @@
     }
 
     /* PROGRESS */
-
     .progress {
       height: 12px;
       border-radius: 20px;
@@ -210,10 +226,9 @@
     }
 
     /* RESULT */
-
     .result-box {
       text-align: center;
-      padding: 20px 10px;
+      padding: 25px 10px;
     }
 
     .result-emoji {
@@ -231,42 +246,27 @@
       color: #6c757d;
     }
 
-    /* REFERENCE */
+    /* WORD */
+    .word-display {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      min-height: 130px;
+      padding: 20px 35px;
+      border-radius: 25px;
+      background: #fff3cd;
+      color: #664d03;
+      font-size: 65px;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 6px #fff;
+    }
 
+    /* REFERENCE */
     .reference-card {
       border: 0;
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-      background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
-    }
-
-    .reference-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-      padding: 14px 16px;
-      background: #eef4ff;
-      border-radius: 14px;
-      border: 1px solid #dfe9ff;
-    }
-
-    .reference-label {
-      font-weight: 700;
-      color: #0d6efd;
-      margin: 0;
-    }
-
-    .reference-select {
-      flex: 1;
-      min-width: 180px;
-      border-radius: 12px;
-      border: 1px solid #cfe1ff;
-      padding: 10px 14px;
-      font-weight: 600;
-      color: #0b2d4d;
-      background: #fff;
     }
 
     .reference-card .table {
@@ -290,75 +290,12 @@
       color: #0d6efd;
     }
 
-    /* SETTINGS */
-
-    .settings-row .form-select {
-      border-radius: 12px;
-      min-height: 46px;
+    /* HIDDEN */
+    .d-none-custom {
+      display: none !important;
     }
 
-    /* TYPING */
-
-    .typing-card {
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .typing-answer {
-      height: 58px;
-      border-radius: 15px;
-      font-size: 24px;
-      font-weight: 600;
-      text-align: center;
-      border: 2px solid #dee2e6;
-    }
-
-    .typing-answer:focus {
-      border-color: #0d6efd;
-      box-shadow: 0 0 0 .2rem rgba(13,110,253,.12);
-    }
-
-    .typing-check-btn {
-      min-height: 55px;
-      border-radius: 14px;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .typing-next-btn {
-      min-height: 55px;
-      border-radius: 14px;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .word-display {
-      font-size: 70px;
-      font-weight: 700;
-      color: #6610f2;
-      margin: 15px 0;
-    }
-
-    .practice-best {
-      font-size: 14px;
-      color: #6c757d;
-    }
-
-    .practice-title {
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    /* HIDE */
-
-    .view {
-      display: none;
-    }
-
-    .view.active {
-      display: block;
-    }
-
+    /* MOBILE */
     @media (max-width: 576px) {
 
       .app-container {
@@ -379,6 +316,12 @@
         font-size: 62px;
       }
 
+      .word-display {
+        min-width: 180px;
+        min-height: 110px;
+        font-size: 48px;
+      }
+
       .option-btn {
         min-height: 65px;
         font-size: 23px;
@@ -392,21 +335,14 @@
         font-size: 12px;
       }
 
-      .main-menu .btn {
-        font-size: 13px;
-        padding: 9px 7px;
+      .answer-input {
+        font-size: 22px;
       }
 
-      .typing-answer {
-        font-size: 20px;
+      .menu-btn {
+        font-size: 14px;
       }
-
-      .word-display {
-        font-size: 52px;
-      }
-
     }
-
   </style>
 </head>
 
@@ -414,14 +350,9 @@
 
 <div class="container app-container">
 
-  <!-- =====================================================
-       MAIN APP CARD
-  ====================================================== -->
-
   <div class="card app-card">
 
     <!-- HEADER -->
-
     <div class="app-header">
 
       <h1>📚 मराठी १४ खडी</h1>
@@ -433,48 +364,42 @@
     </div>
 
 
-    <!-- ===================================================
-         MAIN MENU
-    ==================================================== -->
-
+    <!-- MAIN MENU -->
     <div class="main-menu">
 
       <div class="row g-2">
 
-        <div class="col-4">
+        <div class="col-12 col-md-4">
 
           <button
-            id="menu14Btn"
-            class="btn btn-primary w-100 active"
-            onclick="switchMode('practice14')">
+            id="menuTyping"
+            class="btn btn-outline-primary w-100 menu-btn active">
 
-            📝 १४ खडी
+            ✍️ १४ खडी Practice
 
           </button>
 
         </div>
 
-        <div class="col-4">
+        <div class="col-12 col-md-4">
 
           <button
-            id="menuQuizBtn"
-            class="btn btn-outline-primary w-100"
-            onclick="switchMode('quiz')">
+            id="menuQuiz"
+            class="btn btn-outline-primary w-100 menu-btn">
 
-            🎯 Quiz
+            🧠 Quiz
 
           </button>
 
         </div>
 
-        <div class="col-4">
+        <div class="col-12 col-md-4">
 
           <button
-            id="menuWordBtn"
-            class="btn btn-outline-primary w-100"
-            onclick="switchMode('word')">
+            id="menuWords"
+            class="btn btn-outline-primary w-100 menu-btn">
 
-            📖 Word Practice
+            📝 Word Practice
 
           </button>
 
@@ -485,193 +410,206 @@
     </div>
 
 
-    <!-- ===================================================
-         14 KHADI PRACTICE
-    ==================================================== -->
+    <div class="card-body p-3 p-md-4">
 
-    <div
-      id="practice14View"
-      class="view active">
+      <!-- SETTINGS -->
+      <div class="row g-2 settings-row mb-4">
 
-      <div class="card-body p-3 p-md-4">
+        <div
+          id="letterSetting"
+          class="col-6">
 
-        <div class="text-center mb-3">
+          <label class="form-label fw-bold">
+            अक्षर
+          </label>
 
-          <div class="practice-title">
-            📝 १४ खडी Practice
+          <select
+            id="letterSelect"
+            class="form-select">
+          </select>
+
+        </div>
+
+        <div class="col-6">
+
+          <label class="form-label fw-bold">
+            प्रश्न
+          </label>
+
+          <select
+            id="questionCountSelect"
+            class="form-select">
+
+            <option value="10">10 Questions</option>
+            <option value="14">14 Questions</option>
+            <option value="20">20 Questions</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- SCORE -->
+      <div class="row g-2 mb-4">
+
+        <div class="col-4">
+
+          <div class="score-card">
+
+            <div class="score-title">
+              प्रश्न
+            </div>
+
+            <div
+              id="questionNumber"
+              class="score-value">
+
+              1 / 10
+
+            </div>
+
           </div>
 
+        </div>
+
+        <div class="col-4">
+
+          <div class="score-card">
+
+            <div class="score-title">
+              बरोबर
+            </div>
+
+            <div
+              id="correctScore"
+              class="score-value text-success">
+
+              0
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-4">
+
+          <div class="score-card">
+
+            <div class="score-title">
+              चूक
+            </div>
+
+            <div
+              id="wrongScore"
+              class="score-value text-danger">
+
+              0
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+      <div class="mb-4">
+
+        <div class="d-flex justify-content-between mb-1">
+
           <small class="text-muted">
-            अक्षर पाहा आणि English spelling लिहा
+            Progress
+          </small>
+
+          <small
+            id="progressPercent"
+            class="fw-bold">
+
+            0%
+
           </small>
 
         </div>
 
+        <div class="progress">
 
-        <!-- SETTINGS -->
-
-        <div class="row g-2 settings-row mb-4">
-
-          <div class="col-6">
-
-            <label class="form-label fw-bold">
-              अक्षर
-            </label>
-
-            <select
-              id="practiceLetterSelect"
-              class="form-select">
-            </select>
-
-          </div>
-
-          <div class="col-6">
-
-            <label class="form-label fw-bold">
-              प्रश्न
-            </label>
-
-            <select
-              id="practiceQuestionCount"
-              class="form-select">
-
-              <option value="10">10 Questions</option>
-              <option value="14">14 Questions</option>
-              <option value="20">20 Questions</option>
-
-            </select>
+          <div
+            id="progressBar"
+            class="progress-bar"
+            style="width: 0%">
 
           </div>
 
         </div>
 
-
-        <!-- SCORE -->
-
-        <div class="row g-2 mb-4">
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                प्रश्न
-              </div>
-
-              <div
-                id="practiceQuestionNumber"
-                class="score-value">
-                1 / 10
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                बरोबर
-              </div>
-
-              <div
-                id="practiceCorrect"
-                class="score-value text-success">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                चूक
-              </div>
-
-              <div
-                id="practiceWrong"
-                class="score-value text-danger">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
+      </div>
 
 
-        <!-- PROGRESS -->
+      <!-- =========================================
+           TYPING MODE
+      ========================================== -->
 
-        <div class="mb-4">
+      <div id="typingView">
 
-          <div class="d-flex justify-content-between mb-1">
-
-            <small class="text-muted">
-              Progress
-            </small>
-
-            <small
-              id="practiceProgressPercent"
-              class="fw-bold">
-              0%
-            </small>
-
-          </div>
-
-          <div class="progress">
-
-            <div
-              id="practiceProgressBar"
-              class="progress-bar"
-              style="width:0%">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- TYPING AREA -->
-
-        <div class="typing-card text-center">
+        <div class="question-box">
 
           <div class="question-label">
+
             या अक्षराचे English spelling काय?
+
           </div>
 
           <div
-            id="practiceLetter"
-            class="marathi-letter mb-3">
+            id="typingLetter"
+            class="marathi-letter">
+
             क
+
           </div>
 
-          <div class="question-hint mb-3">
-            खाली English spelling लिहा ✍️
-          </div>
-
-
-          <input
-            id="practiceAnswer"
-            type="text"
-            class="form-control typing-answer"
-            placeholder="उदा. Ka"
-            autocomplete="off"
-            autocapitalize="off"
-          />
-
-
-          <div class="d-grid mt-3">
+          <div class="mt-3">
 
             <button
-              id="practiceCheckBtn"
-              class="btn btn-primary typing-check-btn">
+              id="typingSpeakBtn"
+              class="btn btn-warning speak-btn">
+
+              🔊 ऐका
+
+            </button>
+
+          </div>
+
+          <div class="question-hint">
+
+            English spelling खाली लिहा ✍️
+
+          </div>
+
+        </div>
+
+
+        <!-- ANSWER -->
+        <div class="text-center">
+
+          <input
+            id="typingInput"
+            type="text"
+            class="form-control answer-input"
+            placeholder="उदा. Ka"
+            autocomplete="off"
+            spellcheck="false"
+          />
+
+          <div class="mt-3">
+
+            <button
+              id="typingCheckBtn"
+              class="btn btn-primary check-btn px-5">
 
               ✅ Check Answer
 
@@ -679,241 +617,99 @@
 
           </div>
 
-
-          <!-- FEEDBACK -->
-
-          <div
-            id="practiceFeedback"
-            class="feedback mt-3">
-          </div>
-
-
-          <div class="d-grid mt-2">
-
-            <button
-              id="practiceNextBtn"
-              class="btn btn-success typing-next-btn"
-              disabled>
-
-              पुढचा प्रश्न →
-
-            </button>
-
-          </div>
-
-
-          <div class="practice-best mt-3">
-
-            🏆 Best Score:
-            <strong id="practiceBestScore">
-              0
-            </strong>
-
-          </div>
-
         </div>
 
-      </div>
-
-    </div>
-
-
-    <!-- ===================================================
-         QUIZ VIEW
-    ==================================================== -->
-
-    <div
-      id="quizView"
-      class="view">
-
-      <div class="card-body p-3 p-md-4">
-
-
-        <!-- SETTINGS -->
-
-        <div class="row g-2 settings-row mb-4">
-
-          <div class="col-6">
-
-            <label class="form-label fw-bold">
-              अक्षर
-            </label>
-
-            <select
-              id="letterSelect"
-              class="form-select">
-            </select>
-
-          </div>
-
-          <div class="col-6">
-
-            <label class="form-label fw-bold">
-              प्रश्न
-            </label>
-
-            <select
-              id="questionCountSelect"
-              class="form-select">
-
-              <option value="10">10 Questions</option>
-              <option value="14">14 Questions</option>
-              <option value="20">20 Questions</option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- SCORE -->
-
-        <div class="row g-2 mb-4">
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                प्रश्न
-              </div>
-
-              <div
-                id="questionNumber"
-                class="score-value">
-                1 / 10
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                बरोबर
-              </div>
-
-              <div
-                id="correctScore"
-                class="score-value text-success">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                चूक
-              </div>
-
-              <div
-                id="wrongScore"
-                class="score-value text-danger">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="mb-4">
-
-          <div class="d-flex justify-content-between mb-1">
-
-            <small class="text-muted">
-              Progress
-            </small>
-
-            <small
-              id="progressPercent"
-              class="fw-bold">
-              0%
-            </small>
-
-          </div>
-
-          <div class="progress">
-
-            <div
-              id="progressBar"
-              class="progress-bar"
-              style="width:0%">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- QUESTION -->
-
-        <div class="question-box">
-
-          <div class="question-label">
-            या अक्षराचे English spelling काय?
-          </div>
-
-          <div
-            id="marathiLetter"
-            class="marathi-letter">
-            क
-          </div>
-
-          <div class="question-hint">
-            योग्य पर्याय निवडा 👇
-          </div>
-
-        </div>
-
-
-        <!-- OPTIONS -->
 
         <div
-          id="optionsContainer"
-          class="row g-3">
-        </div>
-
-
-        <!-- FEEDBACK -->
-
-        <div
-          id="feedback"
+          id="typingFeedback"
           class="feedback mt-3">
+
         </div>
 
 
-        <!-- ACTIONS -->
-
-        <div class="d-flex justify-content-center gap-2 mt-2">
+        <div class="text-center mt-2">
 
           <button
-            id="nextBtn"
-            class="btn btn-primary btn-lg px-4"
+            id="typingNextBtn"
+            class="btn btn-success btn-lg px-5"
             disabled>
 
             पुढचा प्रश्न →
 
           </button>
 
-          <button
-            id="restartBtn"
-            class="btn btn-outline-secondary btn-lg">
+        </div>
 
-            🔄 Restart
+      </div>
+
+
+      <!-- =========================================
+           QUIZ MODE
+      ========================================== -->
+
+      <div
+        id="quizView"
+        class="d-none-custom">
+
+        <div class="question-box">
+
+          <div class="question-label">
+
+            या अक्षराचे English spelling काय?
+
+          </div>
+
+          <div
+            id="quizLetter"
+            class="marathi-letter">
+
+            क
+
+          </div>
+
+          <div class="mt-3">
+
+            <button
+              id="quizSpeakBtn"
+              class="btn btn-warning speak-btn">
+
+              🔊 ऐका
+
+            </button>
+
+          </div>
+
+          <div class="question-hint">
+
+            योग्य पर्याय निवडा 👇
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="optionsContainer"
+          class="row g-3">
+
+        </div>
+
+
+        <div
+          id="quizFeedback"
+          class="feedback mt-3">
+
+        </div>
+
+
+        <div class="text-center mt-2">
+
+          <button
+            id="quizNextBtn"
+            class="btn btn-primary btn-lg px-5"
+            disabled>
+
+            पुढचा प्रश्न →
 
           </button>
 
@@ -921,179 +717,68 @@
 
       </div>
 
-    </div>
 
+      <!-- =========================================
+           WORD PRACTICE
+      ========================================== -->
 
-    <!-- ===================================================
-         WORD PRACTICE
-    ==================================================== -->
+      <div
+        id="wordView"
+        class="d-none-custom">
 
-    <div
-      id="wordView"
-      class="view">
-
-      <div class="card-body p-3 p-md-4">
-
-        <div class="text-center mb-3">
-
-          <div class="practice-title">
-            📖 Word Practice
-          </div>
-
-          <small class="text-muted">
-            Marathi शब्द पाहा आणि English spelling लिहा
-          </small>
-
-        </div>
-
-
-        <!-- QUESTION COUNT -->
-
-        <div class="row justify-content-center mb-4">
-
-          <div class="col-6">
-
-            <label class="form-label fw-bold">
-              प्रश्न
-            </label>
-
-            <select
-              id="wordQuestionCount"
-              class="form-select">
-
-              <option value="10">10 Questions</option>
-              <option value="14">14 Questions</option>
-              <option value="20">20 Questions</option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- SCORE -->
-
-        <div class="row g-2 mb-4">
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                प्रश्न
-              </div>
-
-              <div
-                id="wordQuestionNumber"
-                class="score-value">
-                1 / 10
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                बरोबर
-              </div>
-
-              <div
-                id="wordCorrect"
-                class="score-value text-success">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-4">
-
-            <div class="score-card">
-
-              <div class="score-title">
-                चूक
-              </div>
-
-              <div
-                id="wordWrong"
-                class="score-value text-danger">
-                0
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="mb-4">
-
-          <div class="d-flex justify-content-between mb-1">
-
-            <small class="text-muted">
-              Progress
-            </small>
-
-            <small
-              id="wordProgressPercent"
-              class="fw-bold">
-              0%
-            </small>
-
-          </div>
-
-          <div class="progress">
-
-            <div
-              id="wordProgressBar"
-              class="progress-bar"
-              style="width:0%">
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- WORD -->
-
-        <div class="typing-card text-center">
+        <div class="question-box">
 
           <div class="question-label">
-            या शब्दाचे English spelling काय?
+
+            या मराठी शब्दाचे English spelling काय?
+
           </div>
 
           <div
-            id="wordMarathi"
+            id="wordDisplay"
             class="word-display">
+
             कमळ
+
           </div>
 
+          <div class="mt-3">
+
+            <button
+              id="wordSpeakBtn"
+              class="btn btn-warning speak-btn">
+
+              🔊 शब्द ऐका
+
+            </button>
+
+          </div>
+
+          <div class="question-hint">
+
+            English spelling खाली लिहा ✍️
+
+          </div>
+
+        </div>
+
+
+        <div class="text-center">
 
           <input
-            id="wordAnswer"
+            id="wordInput"
             type="text"
-            class="form-control typing-answer"
+            class="form-control answer-input"
             placeholder="उदा. Kamal"
             autocomplete="off"
-            autocapitalize="off"
+            spellcheck="false"
           />
 
-
-          <div class="d-grid mt-3">
+          <div class="mt-3">
 
             <button
               id="wordCheckBtn"
-              class="btn btn-primary typing-check-btn">
+              class="btn btn-primary check-btn px-5">
 
               ✅ Check Answer
 
@@ -1101,37 +786,42 @@
 
           </div>
 
-
-          <div
-            id="wordFeedback"
-            class="feedback mt-3">
-          </div>
+        </div>
 
 
-          <div class="d-grid mt-2">
-
-            <button
-              id="wordNextBtn"
-              class="btn btn-success typing-next-btn"
-              disabled>
-
-              पुढचा शब्द →
-
-            </button>
-
-          </div>
-
-
-          <div class="practice-best mt-3">
-
-            🏆 Best Score:
-            <strong id="wordBestScore">
-              0
-            </strong>
-
-          </div>
+        <div
+          id="wordFeedback"
+          class="feedback mt-3">
 
         </div>
+
+
+        <div class="text-center mt-2">
+
+          <button
+            id="wordNextBtn"
+            class="btn btn-success btn-lg px-5"
+            disabled>
+
+            पुढचा शब्द →
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- RESTART -->
+      <div class="text-center mt-4">
+
+        <button
+          id="restartBtn"
+          class="btn btn-outline-secondary btn-lg px-4">
+
+          🔄 Restart
+
+        </button>
 
       </div>
 
@@ -1140,10 +830,7 @@
   </div>
 
 
-  <!-- =====================================================
-       RESULT CARD
-  ====================================================== -->
-
+  <!-- RESULT -->
   <div
     id="resultCard"
     class="card app-card mt-3 d-none">
@@ -1155,18 +842,21 @@
       </div>
 
       <h3>
-        Quiz Complete!
+        Practice Complete!
       </h3>
 
       <div
         id="finalScore"
         class="result-score">
+
         0 / 10
+
       </div>
 
       <p
         id="resultMessage"
         class="fs-5">
+
       </p>
 
       <p class="best-score">
@@ -1192,30 +882,18 @@
   </div>
 
 
-  <!-- =====================================================
-       REFERENCE
-  ====================================================== -->
-
-  <div class="card reference-card mt-3">
+  <!-- REFERENCE -->
+  <div
+    id="referenceCard"
+    class="card reference-card mt-3">
 
     <div class="card-body">
 
       <h4 class="text-center mb-3">
+
         📖 १४ खडी Reference
+
       </h4>
-
-      <div class="reference-toolbar">
-
-        <label class="reference-label" for="referenceSelect">
-          अक्षर निवडा
-        </label>
-
-        <select
-          id="referenceSelect"
-          class="form-select reference-select">
-        </select>
-
-      </div>
 
       <div class="table-responsive">
 
@@ -1238,6 +916,7 @@
           </thead>
 
           <tbody id="referenceTable">
+
           </tbody>
 
         </table>
@@ -1255,6 +934,9 @@
 
 /* =========================================================
    १४ खडी DATA
+   User requested custom spellings:
+   कॅ = Kya
+   कॉ = Kow
 ========================================================= */
 
 const chaudakhadi = {
@@ -1344,6 +1026,23 @@ const chaudakhadi = {
     ["चः", "Chah"]
   ],
 
+  "छ": [
+    ["छ", "Chha"],
+    ["छा", "Chhaa"],
+    ["छि", "Chhi"],
+    ["छी", "Chhee"],
+    ["छु", "Chhu"],
+    ["छू", "Chhoo"],
+    ["छे", "Chhe"],
+    ["छॅ", "Chhya"],
+    ["छै", "Chhai"],
+    ["छो", "Chho"],
+    ["छॉ", "Chhow"],
+    ["छौ", "Chhau"],
+    ["छं", "Chham"],
+    ["छः", "Chhah"]
+  ],
+
   "ज": [
     ["ज", "Ja"],
     ["जा", "Jaa"],
@@ -1359,6 +1058,23 @@ const chaudakhadi = {
     ["जौ", "Jau"],
     ["जं", "Jam"],
     ["जः", "Jah"]
+  ],
+
+  "झ": [
+    ["झ", "Jha"],
+    ["झा", "Jhaa"],
+    ["झि", "Jhi"],
+    ["झी", "Jhee"],
+    ["झु", "Jhu"],
+    ["झू", "Jhoo"],
+    ["झे", "Jhe"],
+    ["झॅ", "Jhya"],
+    ["झै", "Jhai"],
+    ["झो", "Jho"],
+    ["झॉ", "Jhow"],
+    ["झौ", "Jhau"],
+    ["झं", "Jham"],
+    ["झः", "Jhah"]
   ],
 
   "ट": [
@@ -1378,6 +1094,23 @@ const chaudakhadi = {
     ["टः", "Tah"]
   ],
 
+  "ठ": [
+    ["ठ", "Tha"],
+    ["ठा", "Thaa"],
+    ["ठि", "Thi"],
+    ["ठी", "Thee"],
+    ["ठु", "Thu"],
+    ["ठू", "Thoo"],
+    ["ठे", "The"],
+    ["ठॅ", "Thya"],
+    ["ठै", "Thai"],
+    ["ठो", "Tho"],
+    ["ठॉ", "Thow"],
+    ["ठौ", "Thau"],
+    ["ठं", "Tham"],
+    ["ठः", "Thah"]
+  ],
+
   "ड": [
     ["ड", "Da"],
     ["डा", "Daa"],
@@ -1393,6 +1126,23 @@ const chaudakhadi = {
     ["डौ", "Dau"],
     ["डं", "Dam"],
     ["डः", "Dah"]
+  ],
+
+  "ढ": [
+    ["ढ", "Dha"],
+    ["ढा", "Dhaa"],
+    ["ढि", "Dhi"],
+    ["ढी", "Dhee"],
+    ["ढु", "Dhu"],
+    ["ढू", "Dhoo"],
+    ["ढे", "Dhe"],
+    ["ढॅ", "Dhya"],
+    ["ढै", "Dhai"],
+    ["ढो", "Dho"],
+    ["ढॉ", "Dhow"],
+    ["ढौ", "Dhau"],
+    ["ढं", "Dham"],
+    ["ढः", "Dhah"]
   ],
 
   "त": [
@@ -1412,6 +1162,23 @@ const chaudakhadi = {
     ["तः", "Tah"]
   ],
 
+  "थ": [
+    ["थ", "Tha"],
+    ["था", "Thaa"],
+    ["थि", "Thi"],
+    ["थी", "Thee"],
+    ["थु", "Thu"],
+    ["थू", "Thoo"],
+    ["थे", "The"],
+    ["थॅ", "Thya"],
+    ["थै", "Thai"],
+    ["थो", "Tho"],
+    ["थॉ", "Thow"],
+    ["थौ", "Thau"],
+    ["थं", "Tham"],
+    ["थः", "Thah"]
+  ],
+
   "द": [
     ["द", "Da"],
     ["दा", "Daa"],
@@ -1427,6 +1194,23 @@ const chaudakhadi = {
     ["दौ", "Dau"],
     ["दं", "Dam"],
     ["दः", "Dah"]
+  ],
+
+  "ध": [
+    ["ध", "Dha"],
+    ["धा", "Dhaa"],
+    ["धि", "Dhi"],
+    ["धी", "Dhee"],
+    ["धु", "Dhu"],
+    ["धू", "Dhoo"],
+    ["धे", "Dhe"],
+    ["धॅ", "Dhya"],
+    ["धै", "Dhai"],
+    ["धो", "Dho"],
+    ["धॉ", "Dhow"],
+    ["धौ", "Dhau"],
+    ["धं", "Dham"],
+    ["धः", "Dhah"]
   ],
 
   "न": [
@@ -1463,6 +1247,23 @@ const chaudakhadi = {
     ["पः", "Pah"]
   ],
 
+  "फ": [
+    ["फ", "Pha"],
+    ["फा", "Phaa"],
+    ["फि", "Phi"],
+    ["फी", "Phee"],
+    ["फु", "Phu"],
+    ["फू", "Phoo"],
+    ["फे", "Phe"],
+    ["फॅ", "Phya"],
+    ["फै", "Phai"],
+    ["फो", "Pho"],
+    ["फॉ", "Phow"],
+    ["फौ", "Phau"],
+    ["फं", "Pham"],
+    ["फः", "Phah"]
+  ],
+
   "ब": [
     ["ब", "Ba"],
     ["बा", "Baa"],
@@ -1478,6 +1279,23 @@ const chaudakhadi = {
     ["बौ", "Bau"],
     ["बं", "Bam"],
     ["बः", "Bah"]
+  ],
+
+  "भ": [
+    ["भ", "Bha"],
+    ["भा", "Bhaa"],
+    ["भि", "Bhi"],
+    ["भी", "Bhee"],
+    ["भु", "Bhu"],
+    ["भू", "Bhoo"],
+    ["भे", "Bhe"],
+    ["भॅ", "Bhya"],
+    ["भै", "Bhai"],
+    ["भो", "Bho"],
+    ["भॉ", "Bhow"],
+    ["भौ", "Bhau"],
+    ["भं", "Bham"],
+    ["भः", "Bhah"]
   ],
 
   "म": [
@@ -1582,6 +1400,23 @@ const chaudakhadi = {
     ["शः", "Shah"]
   ],
 
+  "ष": [
+    ["ष", "Sha"],
+    ["षा", "Shaa"],
+    ["षि", "Shi"],
+    ["षी", "Shee"],
+    ["षु", "Shu"],
+    ["षू", "Shoo"],
+    ["षे", "She"],
+    ["षॅ", "Shya"],
+    ["षै", "Shai"],
+    ["षो", "Sho"],
+    ["षॉ", "Show"],
+    ["षौ", "Shau"],
+    ["षं", "Sham"],
+    ["षः", "Shah"]
+  ],
+
   "स": [
     ["स", "Sa"],
     ["सा", "Saa"],
@@ -1642,42 +1477,183 @@ const chaudakhadi = {
 
 const wordData = [
 
-  ["कमळ", "Kamal"],
-  ["घर", "Ghar"],
-  ["मासा", "Masa"],
-  ["पाणी", "Pani"],
-  ["फूल", "Phool"],
-  ["आंबा", "Amba"],
-  ["आई", "Aai"],
-  ["बाबा", "Baba"],
-  ["शाळा", "Shala"],
-  ["मुलगा", "Mulga"],
-  ["मुलगी", "Mulgi"],
-  ["सूर्य", "Surya"],
-  ["चंद्र", "Chandra"],
-  ["पुस्तक", "Pustak"],
-  ["पेन", "Pen"],
-  ["झाड", "Zhad"],
-  ["गाय", "Gay"],
-  ["घोडा", "Ghoda"],
-  ["कबूतर", "Kabutar"],
-  ["फळ", "Phal"],
-  ["आईस्क्रीम", "Icecream"],
-  ["सफरचंद", "Safarchand"],
-  ["केळी", "Keli"],
-  ["दूध", "Dudh"],
-  ["भात", "Bhat"],
-  ["पोळी", "Poli"],
-  ["चेंडू", "Chendu"],
-  ["खेळ", "Khel"],
-  ["पक्षी", "Pakshi"],
-  ["मित्र", "Mitra"]
+  {
+    marathi: "कमळ",
+    english: "Kamal"
+  },
+
+  {
+    marathi: "घर",
+    english: "Ghar"
+  },
+
+  {
+    marathi: "मासा",
+    english: "Masa"
+  },
+
+  {
+    marathi: "पाणी",
+    english: "Pani"
+  },
+
+  {
+    marathi: "फूल",
+    english: "Phool"
+  },
+
+  {
+    marathi: "आंबा",
+    english: "Amba"
+  },
+
+  {
+    marathi: "आई",
+    english: "Aai"
+  },
+
+  {
+    marathi: "बाबा",
+    english: "Baba"
+  },
+
+  {
+    marathi: "शाळा",
+    english: "Shala"
+  },
+
+  {
+    marathi: "मुलगा",
+    english: "Mulga"
+  },
+
+  {
+    marathi: "मुलगी",
+    english: "Mulgi"
+  },
+
+  {
+    marathi: "सूर्य",
+    english: "Surya"
+  },
+
+  {
+    marathi: "चंद्र",
+    english: "Chandra"
+  },
+
+  {
+    marathi: "पुस्तक",
+    english: "Pustak"
+  },
+
+  {
+    marathi: "पेन",
+    english: "Pen"
+  },
+
+  {
+    marathi: "झाड",
+    english: "Zhad"
+  },
+
+  {
+    marathi: "गाय",
+    english: "Gaay"
+  },
+
+  {
+    marathi: "घोडा",
+    english: "Ghoda"
+  },
+
+  {
+    marathi: "कबूतर",
+    english: "Kabutar"
+  },
+
+  {
+    marathi: "फळ",
+    english: "Phal"
+  },
+
+  {
+    marathi: "कमरा",
+    english: "Kamra"
+  },
+
+  {
+    marathi: "कमळाचे फूल",
+    english: "Kamalache Phool"
+  },
+
+  {
+    marathi: "आकाश",
+    english: "Aakash"
+  },
+
+  {
+    marathi: "पक्षी",
+    english: "Pakshi"
+  },
+
+  {
+    marathi: "मोर",
+    english: "Mor"
+  },
+
+  {
+    marathi: "ससा",
+    english: "Sasa"
+  },
+
+  {
+    marathi: "कासव",
+    english: "Kasav"
+  },
+
+  {
+    marathi: "मांजर",
+    english: "Manjar"
+  },
+
+  {
+    marathi: "कुत्रा",
+    english: "Kutra"
+  },
+
+  {
+    marathi: "दूध",
+    english: "Dudh"
+  }
+
 ];
 
 
 /* =========================================================
    DOM
 ========================================================= */
+
+const menuTyping =
+  document.getElementById("menuTyping");
+
+const menuQuiz =
+  document.getElementById("menuQuiz");
+
+const menuWords =
+  document.getElementById("menuWords");
+
+const typingView =
+  document.getElementById("typingView");
+
+const quizView =
+  document.getElementById("quizView");
+
+const wordView =
+  document.getElementById("wordView");
+
+const letterSetting =
+  document.getElementById("letterSetting");
 
 const letterSelect =
   document.getElementById("letterSelect");
@@ -1700,20 +1676,68 @@ const progressBar =
 const progressPercent =
   document.getElementById("progressPercent");
 
-const marathiLetter =
-  document.getElementById("marathiLetter");
+
+/* TYPING */
+
+const typingLetter =
+  document.getElementById("typingLetter");
+
+const typingInput =
+  document.getElementById("typingInput");
+
+const typingCheckBtn =
+  document.getElementById("typingCheckBtn");
+
+const typingFeedback =
+  document.getElementById("typingFeedback");
+
+const typingNextBtn =
+  document.getElementById("typingNextBtn");
+
+const typingSpeakBtn =
+  document.getElementById("typingSpeakBtn");
+
+
+/* QUIZ */
+
+const quizLetter =
+  document.getElementById("quizLetter");
 
 const optionsContainer =
   document.getElementById("optionsContainer");
 
-const feedback =
-  document.getElementById("feedback");
+const quizFeedback =
+  document.getElementById("quizFeedback");
 
-const nextBtn =
-  document.getElementById("nextBtn");
+const quizNextBtn =
+  document.getElementById("quizNextBtn");
 
-const restartBtn =
-  document.getElementById("restartBtn");
+const quizSpeakBtn =
+  document.getElementById("quizSpeakBtn");
+
+
+/* WORD */
+
+const wordDisplay =
+  document.getElementById("wordDisplay");
+
+const wordInput =
+  document.getElementById("wordInput");
+
+const wordCheckBtn =
+  document.getElementById("wordCheckBtn");
+
+const wordFeedback =
+  document.getElementById("wordFeedback");
+
+const wordNextBtn =
+  document.getElementById("wordNextBtn");
+
+const wordSpeakBtn =
+  document.getElementById("wordSpeakBtn");
+
+
+/* RESULT */
 
 const resultCard =
   document.getElementById("resultCard");
@@ -1727,154 +1751,28 @@ const resultMessage =
 const bestScore =
   document.getElementById("bestScore");
 
+const restartBtn =
+  document.getElementById("restartBtn");
+
 const playAgainBtn =
   document.getElementById("playAgainBtn");
+
+const referenceCard =
+  document.getElementById("referenceCard");
 
 const referenceTable =
   document.getElementById("referenceTable");
 
-const referenceSelect =
-  document.getElementById("referenceSelect");
-
 
 /* =========================================================
-   PRACTICE DOM
+   STATE
 ========================================================= */
 
-const practiceLetterSelect =
-  document.getElementById("practiceLetterSelect");
+const state = {
 
-const practiceQuestionCount =
-  document.getElementById("practiceQuestionCount");
-
-const practiceQuestionNumber =
-  document.getElementById("practiceQuestionNumber");
-
-const practiceCorrect =
-  document.getElementById("practiceCorrect");
-
-const practiceWrong =
-  document.getElementById("practiceWrong");
-
-const practiceProgressBar =
-  document.getElementById("practiceProgressBar");
-
-const practiceProgressPercent =
-  document.getElementById("practiceProgressPercent");
-
-const practiceLetter =
-  document.getElementById("practiceLetter");
-
-const practiceAnswer =
-  document.getElementById("practiceAnswer");
-
-const practiceCheckBtn =
-  document.getElementById("practiceCheckBtn");
-
-const practiceNextBtn =
-  document.getElementById("practiceNextBtn");
-
-const practiceFeedback =
-  document.getElementById("practiceFeedback");
-
-const practiceBestScore =
-  document.getElementById("practiceBestScore");
-
-
-/* =========================================================
-   WORD DOM
-========================================================= */
-
-const wordQuestionCount =
-  document.getElementById("wordQuestionCount");
-
-const wordQuestionNumber =
-  document.getElementById("wordQuestionNumber");
-
-const wordCorrect =
-  document.getElementById("wordCorrect");
-
-const wordWrong =
-  document.getElementById("wordWrong");
-
-const wordProgressBar =
-  document.getElementById("wordProgressBar");
-
-const wordProgressPercent =
-  document.getElementById("wordProgressPercent");
-
-const wordMarathi =
-  document.getElementById("wordMarathi");
-
-const wordAnswer =
-  document.getElementById("wordAnswer");
-
-const wordCheckBtn =
-  document.getElementById("wordCheckBtn");
-
-const wordNextBtn =
-  document.getElementById("wordNextBtn");
-
-const wordFeedback =
-  document.getElementById("wordFeedback");
-
-const wordBestScore =
-  document.getElementById("wordBestScore");
-
-
-/* =========================================================
-   QUIZ STATE
-========================================================= */
-
-const quizState = {
-
-  selectedLetter: randomItem(
-    Object.keys(chaudakhadi)
-  ),
-
-  totalQuestions: 10,
-
-  questions: [],
-
-  currentIndex: 0,
-
-  correct: 0,
-
-  wrong: 0,
-
-  answered: false
-
-};
-
-
-/* =========================================================
-   PRACTICE STATE
-========================================================= */
-
-const practiceState = {
+  mode: "typing",
 
   selectedLetter: "क",
-
-  totalQuestions: 10,
-
-  questions: [],
-
-  currentIndex: 0,
-
-  correct: 0,
-
-  wrong: 0,
-
-  answered: false
-
-};
-
-
-/* =========================================================
-   WORD STATE
-========================================================= */
-
-const wordState = {
 
   totalQuestions: 10,
 
@@ -1898,13 +1796,18 @@ const wordState = {
 const STORAGE_KEY =
   "marathiLearningApp";
 
+const BEST_KEY =
+  "marathiLearningBestScores";
+
 
 function getStorage() {
 
   try {
 
     return JSON.parse(
-      localStorage.getItem(STORAGE_KEY)
+      localStorage.getItem(
+        STORAGE_KEY
+      )
     ) || {};
 
   } catch {
@@ -1916,7 +1819,20 @@ function getStorage() {
 }
 
 
-function saveStorage(data) {
+function saveSettings() {
+
+  const data = {
+
+    mode:
+      state.mode,
+
+    selectedLetter:
+      state.selectedLetter,
+
+    totalQuestions:
+      state.totalQuestions
+
+  };
 
   localStorage.setItem(
     STORAGE_KEY,
@@ -1926,51 +1842,138 @@ function saveStorage(data) {
 }
 
 
+function getBestScore(mode) {
+
+  try {
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          BEST_KEY
+        )
+      ) || {};
+
+    return Number(
+      data[mode] || 0
+    );
+
+  } catch {
+
+    return 0;
+
+  }
+
+}
+
+
+function saveBestScore(mode, score) {
+
+  try {
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          BEST_KEY
+        )
+      ) || {};
+
+    const oldBest =
+      Number(data[mode] || 0);
+
+    if (score > oldBest) {
+
+      data[mode] = score;
+
+      localStorage.setItem(
+        BEST_KEY,
+        JSON.stringify(data)
+      );
+
+    }
+
+  } catch {}
+
+}
+
+
 /* =========================================================
-   BEST SCORE
+   SOUND
 ========================================================= */
 
-function getBest(mode) {
+function speakText(
+  text,
+  lang = "mr-IN",
+  rate = 0.75
+) {
 
-  const data = getStorage();
+  if (
+    !("speechSynthesis" in window)
+  ) {
 
-  return Number(
-    data.best?.[mode] || 0
+    alert(
+      "तुमच्या Browser मध्ये आवाजाची सुविधा उपलब्ध नाही."
+    );
+
+    return;
+
+  }
+
+  window.speechSynthesis.cancel();
+
+  const speech =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  speech.lang =
+    lang;
+
+  speech.rate =
+    rate;
+
+  speech.pitch =
+    1.05;
+
+  speech.volume =
+    1;
+
+  window.speechSynthesis.speak(
+    speech
   );
 
 }
 
 
-function setBest(mode, score) {
+function correctSound() {
 
-  const data = getStorage();
+  speakText(
+    "बरोबर! खूप छान!",
+    "mr-IN",
+    0.8
+  );
 
-  if (!data.best) {
-    data.best = {};
-  }
+}
 
-  const oldBest =
-    Number(data.best[mode] || 0);
 
-  if (score > oldBest) {
+function wrongSound(answer) {
 
-    data.best[mode] =
-      score;
-
-    saveStorage(data);
-
-  }
+  speakText(
+    `चुकीचे. योग्य उत्तर ${answer}`,
+    "mr-IN",
+    0.8
+  );
 
 }
 
 
 /* =========================================================
-   SHUFFLE
+   UTILITIES
 ========================================================= */
 
 function shuffle(array) {
 
-  const result = [...array];
+  const result =
+    [...array];
 
   for (
     let i = result.length - 1;
@@ -1980,7 +1983,8 @@ function shuffle(array) {
 
     const j =
       Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
 
     [
@@ -2002,209 +2006,240 @@ function randomItem(array) {
 
   return array[
     Math.floor(
-      Math.random() * array.length
+      Math.random() *
+      array.length
     )
   ];
 
 }
 
 
-/* =========================================================
-   NORMALIZE ANSWER
-========================================================= */
-
 function normalizeAnswer(value) {
 
-  return value
+  return String(value)
     .trim()
-    .replace(/\s+/g, "")
+    .replace(/\s+/g, " ")
     .toLowerCase();
 
 }
 
 
 /* =========================================================
-   MENU SWITCH
+   LETTER DROPDOWN
 ========================================================= */
 
-function switchMode(mode) {
+function initializeLetterDropdown() {
 
-  document
-    .querySelectorAll(".view")
-    .forEach(view => {
+  letterSelect.innerHTML = "";
 
-      view.classList.remove("active");
+  const allOption =
+    document.createElement("option");
 
-    });
+  allOption.value =
+    "ALL";
+
+  allOption.textContent =
+    "सर्व अक्षरे";
+
+  letterSelect.appendChild(
+    allOption
+  );
 
 
-  document
-    .querySelectorAll(".main-menu .btn")
-    .forEach(btn => {
+  Object.keys(chaudakhadi)
+    .forEach(letter => {
 
-      btn.classList.remove("active");
+      const option =
+        document.createElement(
+          "option"
+        );
 
-      btn.classList.remove(
-        "btn-primary"
+      option.value =
+        letter;
+
+      option.textContent =
+        `${letter} - ${chaudakhadi[letter][0][1]}`;
+
+      letterSelect.appendChild(
+        option
       );
 
-      btn.classList.add(
-        "btn-outline-primary"
-      );
-
     });
-
-
-  if (mode === "practice14") {
-
-    document
-      .getElementById("practice14View")
-      .classList.add("active");
-
-    activateMenu("menu14Btn");
-
-  }
-
-
-  if (mode === "quiz") {
-
-    document
-      .getElementById("quizView")
-      .classList.add("active");
-
-    activateMenu("menuQuizBtn");
-
-  }
-
-
-  if (mode === "word") {
-
-    document
-      .getElementById("wordView")
-      .classList.add("active");
-
-    activateMenu("menuWordBtn");
-
-  }
-
-
-  resultCard.classList.add(
-    "d-none"
-  );
-
-}
-
-
-function activateMenu(id) {
-
-  const btn =
-    document.getElementById(id);
-
-  btn.classList.add("active");
-
-  btn.classList.remove(
-    "btn-outline-primary"
-  );
-
-  btn.classList.add(
-    "btn-primary"
-  );
 
 }
 
 
 /* =========================================================
-   INITIALIZE LETTER DROPDOWNS
+   CREATE TYPING QUESTIONS
 ========================================================= */
 
-function initializeLetterDropdowns() {
+function createTypingQuestions() {
 
-  const letters =
-    Object.keys(chaudakhadi);
+  let data = [];
 
+  if (
+    state.selectedLetter ===
+    "ALL"
+  ) {
 
-  [letterSelect, practiceLetterSelect]
-    .forEach(select => {
+    Object.keys(chaudakhadi)
+      .forEach(letter => {
 
-      select.innerHTML = "";
+        chaudakhadi[letter]
+          .forEach(item => {
 
-      letters.forEach(letter => {
+            data.push({
 
-        const option =
-          document.createElement("option");
+              marathi:
+                item[0],
 
-        option.value =
-          letter;
+              english:
+                item[1]
 
-        option.textContent =
-          `${letter} - ${chaudakhadi[letter][0][1]}`;
+            });
 
-        select.appendChild(option);
+          });
 
       });
 
-    });
+  } else {
+
+    data =
+      chaudakhadi[
+        state.selectedLetter
+      ].map(item => ({
+
+        marathi:
+          item[0],
+
+        english:
+          item[1]
+
+      }));
+
+  }
+
+
+  const shuffled =
+    shuffle(data);
+
+  const result = [];
+
+  for (
+    let i = 0;
+    i < state.totalQuestions;
+    i++
+  ) {
+
+    result.push(
+      shuffled[
+        i % shuffled.length
+      ]
+    );
+
+  }
+
+  state.questions =
+    shuffle(result);
 
 }
 
 
 /* =========================================================
-   QUIZ CREATE QUESTIONS
+   CREATE QUIZ QUESTIONS
 ========================================================= */
 
 function createQuizQuestions() {
 
-  const data =
-    chaudakhadi[
-      quizState.selectedLetter
-    ];
+  let data = [];
 
-  const shuffledData =
+  if (
+    state.selectedLetter ===
+    "ALL"
+  ) {
+
+    Object.keys(chaudakhadi)
+      .forEach(letter => {
+
+        chaudakhadi[letter]
+          .forEach(item => {
+
+            data.push({
+
+              marathi:
+                item[0],
+
+              english:
+                item[1]
+
+            });
+
+          });
+
+      });
+
+  } else {
+
+    data =
+      chaudakhadi[
+        state.selectedLetter
+      ].map(item => ({
+
+        marathi:
+          item[0],
+
+        english:
+          item[1]
+
+      }));
+
+  }
+
+
+  const shuffled =
     shuffle(data);
 
-  const selectedQuestions = [];
+  const selected = [];
 
   for (
     let i = 0;
-    i < quizState.totalQuestions;
+    i < state.totalQuestions;
     i++
   ) {
 
-    selectedQuestions.push(
-      shuffledData[
-        i % shuffledData.length
+    selected.push(
+      shuffled[
+        i % shuffled.length
       ]
     );
 
   }
 
 
-  quizState.questions =
-    shuffle(selectedQuestions)
-      .map(item => {
-
-        const correctAnswer =
-          item[1];
+  state.questions =
+    shuffle(selected)
+      .map(question => {
 
         const options = [
-          correctAnswer
+          question.english
         ];
 
         while (
           options.length < 4
         ) {
 
-          const randomAnswer =
-            randomItem(data)[1];
+          const random =
+            randomItem(data)
+              .english;
 
           if (
             !options.includes(
-              randomAnswer
+              random
             )
           ) {
 
             options.push(
-              randomAnswer
+              random
             );
 
           }
@@ -2214,10 +2249,10 @@ function createQuizQuestions() {
         return {
 
           marathi:
-            item[0],
+            question.marathi,
 
           english:
-            correctAnswer,
+            question.english,
 
           options:
             shuffle(options)
@@ -2230,33 +2265,65 @@ function createQuizQuestions() {
 
 
 /* =========================================================
-   QUIZ UPDATE UI
+   CREATE WORD QUESTIONS
 ========================================================= */
 
-function updateQuizUI() {
+function createWordQuestions() {
+
+  const shuffled =
+    shuffle(wordData);
+
+  const result = [];
+
+  for (
+    let i = 0;
+    i < state.totalQuestions;
+    i++
+  ) {
+
+    result.push(
+      shuffled[
+        i % shuffled.length
+      ]
+    );
+
+  }
+
+  state.questions =
+    shuffle(result);
+
+}
+
+
+/* =========================================================
+   UPDATE SCORE
+========================================================= */
+
+function updateScoreUI() {
+
+  const current =
+    Math.min(
+      state.currentIndex + 1,
+      state.totalQuestions
+    );
 
   questionNumber.textContent =
-    `${Math.min(
-      quizState.currentIndex + 1,
-      quizState.totalQuestions
-    )} / ${quizState.totalQuestions}`;
-
+    `${current} / ${state.totalQuestions}`;
 
   correctScore.textContent =
-    quizState.correct;
+    state.correct;
 
   wrongScore.textContent =
-    quizState.wrong;
+    state.wrong;
 
+  const completed =
+    state.currentIndex /
+    state.totalQuestions;
 
   const percent =
     Math.round(
-      (
-        quizState.currentIndex /
-        quizState.totalQuestions
-      ) * 100
+      completed * 100
     );
-
 
   progressBar.style.width =
     `${percent}%`;
@@ -2268,117 +2335,590 @@ function updateQuizUI() {
 
 
 /* =========================================================
-   QUIZ LOAD
+   RESET
 ========================================================= */
 
-function loadQuizQuestion() {
+function resetState() {
+
+  state.currentIndex = 0;
+
+  state.correct = 0;
+
+  state.wrong = 0;
+
+  state.answered = false;
+
+}
+
+
+/* =========================================================
+   START MODE
+========================================================= */
+
+function startMode(mode) {
+
+  state.mode =
+    mode;
+
+  resetState();
+
+  resultCard.classList.add(
+    "d-none"
+  );
+
+  updateMenu();
+
+  saveSettings();
+
 
   if (
-    quizState.currentIndex >=
-    quizState.questions.length
+    mode === "typing"
   ) {
 
-    showQuizResult();
+    typingView.classList.remove(
+      "d-none-custom"
+    );
+
+    quizView.classList.add(
+      "d-none-custom"
+    );
+
+    wordView.classList.add(
+      "d-none-custom"
+    );
+
+    letterSetting.classList.remove(
+      "d-none-custom"
+    );
+
+    referenceCard.classList.remove(
+      "d-none-custom"
+    );
+
+    createTypingQuestions();
+
+    loadTypingQuestion();
+
+  }
+
+
+  if (
+    mode === "quiz"
+  ) {
+
+    typingView.classList.add(
+      "d-none-custom"
+    );
+
+    quizView.classList.remove(
+      "d-none-custom"
+    );
+
+    wordView.classList.add(
+      "d-none-custom"
+    );
+
+    letterSetting.classList.remove(
+      "d-none-custom"
+    );
+
+    referenceCard.classList.remove(
+      "d-none-custom"
+    );
+
+    createQuizQuestions();
+
+    loadQuizQuestion();
+
+  }
+
+
+  if (
+    mode === "words"
+  ) {
+
+    typingView.classList.add(
+      "d-none-custom"
+    );
+
+    quizView.classList.add(
+      "d-none-custom"
+    );
+
+    wordView.classList.remove(
+      "d-none-custom"
+    );
+
+    letterSetting.classList.add(
+      "d-none-custom"
+    );
+
+    referenceCard.classList.add(
+      "d-none-custom"
+    );
+
+    createWordQuestions();
+
+    loadWordQuestion();
+
+  }
+
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function updateMenu() {
+
+  menuTyping.classList.remove(
+    "active"
+  );
+
+  menuQuiz.classList.remove(
+    "active"
+  );
+
+  menuWords.classList.remove(
+    "active"
+  );
+
+
+  if (
+    state.mode ===
+    "typing"
+  ) {
+
+    menuTyping.classList.add(
+      "active"
+    );
+
+  }
+
+
+  if (
+    state.mode ===
+    "quiz"
+  ) {
+
+    menuQuiz.classList.add(
+      "active"
+    );
+
+  }
+
+
+  if (
+    state.mode ===
+    "words"
+  ) {
+
+    menuWords.classList.add(
+      "active"
+    );
+
+  }
+
+}
+
+
+menuTyping.addEventListener(
+  "click",
+  () => {
+
+    startMode(
+      "typing"
+    );
+
+  }
+);
+
+
+menuQuiz.addEventListener(
+  "click",
+  () => {
+
+    startMode(
+      "quiz"
+    );
+
+  }
+);
+
+
+menuWords.addEventListener(
+  "click",
+  () => {
+
+    startMode(
+      "words"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   TYPING - LOAD
+========================================================= */
+
+function loadTypingQuestion() {
+
+  if (
+    state.currentIndex >=
+    state.questions.length
+  ) {
+
+    showResult();
 
     return;
 
   }
 
 
-  quizState.answered =
+  state.answered =
     false;
 
-  nextBtn.disabled =
-    true;
-
-  feedback.textContent =
+  typingInput.value =
     "";
 
-  feedback.className =
+  typingInput.disabled =
+    false;
+
+  typingCheckBtn.disabled =
+    false;
+
+  typingNextBtn.disabled =
+    true;
+
+  typingFeedback.textContent =
+    "";
+
+  typingFeedback.className =
     "feedback mt-3";
 
 
   const question =
-    quizState.questions[
-      quizState.currentIndex
+    state.questions[
+      state.currentIndex
     ];
 
-
-  marathiLetter.textContent =
+  typingLetter.textContent =
     question.marathi;
 
+  updateScoreUI();
 
-  updateQuizUI();
-
-  renderOptions(question);
+  typingInput.focus();
 
 }
 
 
 /* =========================================================
-   QUIZ OPTIONS
+   TYPING - CHECK
 ========================================================= */
 
-function renderOptions(question) {
+function checkTypingAnswer() {
 
-  optionsContainer.innerHTML =
-    "";
+  if (
+    state.answered
+  ) {
 
+    return;
 
-  question.options.forEach(
-    (option, index) => {
-
-      const col =
-        document.createElement("div");
-
-      col.className =
-        "col-6";
+  }
 
 
-      const button =
-        document.createElement("button");
+  const question =
+    state.questions[
+      state.currentIndex
+    ];
 
-      button.type =
-        "button";
+  const userAnswer =
+    normalizeAnswer(
+      typingInput.value
+    );
 
-      button.className =
-        "btn btn-outline-primary option-btn";
+  if (!userAnswer) {
 
+    typingFeedback.className =
+      "feedback wrong mt-3";
 
-      button.innerHTML = `
-        <span class="option-number">
-          ${index + 1}
-        </span>
-        ${option}
-      `;
+    typingFeedback.innerHTML =
+      "✍️ आधी उत्तर लिहा.";
 
+    speakText(
+      "आधी उत्तर लिहा",
+      "mr-IN"
+    );
 
-      button.addEventListener(
-        "click",
-        () => {
+    return;
 
-          checkQuizAnswer(
-            button,
-            option,
-            question
-          );
-
-        }
-      );
+  }
 
 
-      col.appendChild(button);
+  state.answered =
+    true;
 
-      optionsContainer.appendChild(col);
+  typingInput.disabled =
+    true;
+
+  typingCheckBtn.disabled =
+    true;
+
+
+  if (
+    userAnswer ===
+    normalizeAnswer(
+      question.english
+    )
+  ) {
+
+    state.correct++;
+
+    typingFeedback.className =
+      "feedback correct mt-3";
+
+    typingFeedback.innerHTML =
+      "🎉 बरोबर! खूप छान!";
+
+    correctSound();
+
+  } else {
+
+    state.wrong++;
+
+    typingFeedback.className =
+      "feedback wrong mt-3";
+
+    typingFeedback.innerHTML = `
+      ❌ चुकीचे! योग्य उत्तर:
+      <strong class="ms-1">
+        ${question.english}
+      </strong>
+    `;
+
+    wrongSound(
+      question.english
+    );
+
+  }
+
+
+  correctScore.textContent =
+    state.correct;
+
+  wrongScore.textContent =
+    state.wrong;
+
+  typingNextBtn.disabled =
+    false;
+
+}
+
+
+/* =========================================================
+   TYPING - NEXT
+========================================================= */
+
+function nextTypingQuestion() {
+
+  if (
+    !state.answered
+  ) {
+
+    return;
+
+  }
+
+  state.currentIndex++;
+
+  if (
+    state.currentIndex >=
+    state.totalQuestions
+  ) {
+
+    showResult();
+
+    return;
+
+  }
+
+  loadTypingQuestion();
+
+}
+
+
+typingCheckBtn.addEventListener(
+  "click",
+  checkTypingAnswer
+);
+
+
+typingInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      checkTypingAnswer();
 
     }
+
+  }
+);
+
+
+typingNextBtn.addEventListener(
+  "click",
+  nextTypingQuestion
+);
+
+
+typingSpeakBtn.addEventListener(
+  "click",
+  () => {
+
+    const question =
+      state.questions[
+        state.currentIndex
+      ];
+
+    if (question) {
+
+      speakText(
+        question.marathi,
+        "mr-IN",
+        0.65
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   QUIZ - LOAD
+========================================================= */
+
+function loadQuizQuestion() {
+
+  if (
+    state.currentIndex >=
+    state.questions.length
+  ) {
+
+    showResult();
+
+    return;
+
+  }
+
+
+  state.answered =
+    false;
+
+  quizNextBtn.disabled =
+    true;
+
+  quizFeedback.textContent =
+    "";
+
+  quizFeedback.className =
+    "feedback mt-3";
+
+
+  const question =
+    state.questions[
+      state.currentIndex
+    ];
+
+  quizLetter.textContent =
+    question.marathi;
+
+  updateScoreUI();
+
+  renderOptions(
+    question
   );
 
 }
 
 
 /* =========================================================
-   QUIZ CHECK
+   QUIZ - OPTIONS
+========================================================= */
+
+function renderOptions(
+  question
+) {
+
+  optionsContainer.innerHTML =
+    "";
+
+  question.options
+    .forEach(
+      (option, index) => {
+
+        const col =
+          document.createElement(
+            "div"
+          );
+
+        col.className =
+          "col-6";
+
+        const button =
+          document.createElement(
+            "button"
+          );
+
+        button.type =
+          "button";
+
+        button.className =
+          "btn btn-outline-primary option-btn";
+
+        button.innerHTML = `
+          <span class="option-number">
+            ${index + 1}
+          </span>
+          ${option}
+        `;
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            checkQuizAnswer(
+              button,
+              option,
+              question
+            );
+
+          }
+        );
+
+        col.appendChild(
+          button
+        );
+
+        optionsContainer.appendChild(
+          col
+        );
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   QUIZ - CHECK
 ========================================================= */
 
 function checkQuizAnswer(
@@ -2388,7 +2928,7 @@ function checkQuizAnswer(
 ) {
 
   if (
-    quizState.answered
+    state.answered
   ) {
 
     return;
@@ -2396,7 +2936,7 @@ function checkQuizAnswer(
   }
 
 
-  quizState.answered =
+  state.answered =
     true;
 
 
@@ -2406,12 +2946,14 @@ function checkQuizAnswer(
     );
 
 
-  buttons.forEach(button => {
+  buttons.forEach(
+    button => {
 
-    button.disabled =
-      true;
+      button.disabled =
+        true;
 
-  });
+    }
+  );
 
 
   if (
@@ -2427,15 +2969,15 @@ function checkQuizAnswer(
       "correct-answer"
     );
 
+    state.correct++;
 
-    quizState.correct++;
-
-
-    feedback.className =
+    quizFeedback.className =
       "feedback correct mt-3";
 
-    feedback.innerHTML =
+    quizFeedback.innerHTML =
       "🎉 बरोबर! खूप छान!";
+
+    correctSound();
 
   } else {
 
@@ -2447,14 +2989,12 @@ function checkQuizAnswer(
       "wrong-answer"
     );
 
+    state.wrong++;
 
-    quizState.wrong++;
-
-
-    feedback.className =
+    quizFeedback.className =
       "feedback wrong mt-3";
 
-    feedback.innerHTML = `
+    quizFeedback.innerHTML = `
       ❌ चुकीचे!
       योग्य उत्तर:
       <strong class="ms-1">
@@ -2462,116 +3002,375 @@ function checkQuizAnswer(
       </strong>
     `;
 
+    buttons.forEach(
+      button => {
 
-    buttons.forEach(button => {
+        if (
+          button.textContent
+            .trim()
+            .endsWith(
+              question.english
+            )
+        ) {
 
-      if (
-        button.textContent
-          .trim()
-          .endsWith(
-            question.english
-          )
-      ) {
+          button.classList.remove(
+            "btn-outline-primary"
+          );
 
-        button.classList.remove(
-          "btn-outline-primary"
-        );
+          button.classList.add(
+            "correct-answer"
+          );
 
-        button.classList.add(
-          "correct-answer"
-        );
+        }
 
       }
+    );
 
-    });
+    wrongSound(
+      question.english
+    );
 
   }
 
 
   correctScore.textContent =
-    quizState.correct;
+    state.correct;
 
   wrongScore.textContent =
-    quizState.wrong;
+    state.wrong;
 
-  nextBtn.disabled =
+  quizNextBtn.disabled =
     false;
 
 }
 
 
 /* =========================================================
-   QUIZ NEXT
+   QUIZ - NEXT
 ========================================================= */
 
 function nextQuizQuestion() {
 
   if (
-    !quizState.answered
+    !state.answered
   ) {
 
     return;
 
   }
 
-
-  quizState.currentIndex++;
-
+  state.currentIndex++;
 
   if (
-    quizState.currentIndex >=
-    quizState.totalQuestions
+    state.currentIndex >=
+    state.totalQuestions
   ) {
 
-    showQuizResult();
+    showResult();
 
     return;
 
   }
-
 
   loadQuizQuestion();
 
 }
 
 
-nextBtn.addEventListener(
+quizNextBtn.addEventListener(
   "click",
   nextQuizQuestion
 );
 
 
+quizSpeakBtn.addEventListener(
+  "click",
+  () => {
+
+    const question =
+      state.questions[
+        state.currentIndex
+      ];
+
+    if (question) {
+
+      speakText(
+        question.marathi,
+        "mr-IN",
+        0.65
+      );
+
+    }
+
+  }
+);
+
+
 /* =========================================================
-   QUIZ RESULT
+   WORD - LOAD
 ========================================================= */
 
-function showQuizResult() {
+function loadWordQuestion() {
 
-  updateQuizUI();
+  if (
+    state.currentIndex >=
+    state.questions.length
+  ) {
 
-  optionsContainer.innerHTML =
+    showResult();
+
+    return;
+
+  }
+
+
+  state.answered =
+    false;
+
+  wordInput.value =
     "";
 
-  marathiLetter.textContent =
-    "🎉";
+  wordInput.disabled =
+    false;
 
-  feedback.textContent =
+  wordCheckBtn.disabled =
+    false;
+
+  wordNextBtn.disabled =
+    true;
+
+  wordFeedback.textContent =
     "";
 
-  nextBtn.disabled =
+  wordFeedback.className =
+    "feedback mt-3";
+
+
+  const question =
+    state.questions[
+      state.currentIndex
+    ];
+
+  wordDisplay.textContent =
+    question.marathi;
+
+  updateScoreUI();
+
+  wordInput.focus();
+
+}
+
+
+/* =========================================================
+   WORD - CHECK
+========================================================= */
+
+function checkWordAnswer() {
+
+  if (
+    state.answered
+  ) {
+
+    return;
+
+  }
+
+
+  const question =
+    state.questions[
+      state.currentIndex
+    ];
+
+  const userAnswer =
+    normalizeAnswer(
+      wordInput.value
+    );
+
+
+  if (!userAnswer) {
+
+    wordFeedback.className =
+      "feedback wrong mt-3";
+
+    wordFeedback.innerHTML =
+      "✍️ आधी उत्तर लिहा.";
+
+    speakText(
+      "आधी उत्तर लिहा",
+      "mr-IN"
+    );
+
+    return;
+
+  }
+
+
+  state.answered =
+    true;
+
+  wordInput.disabled =
+    true;
+
+  wordCheckBtn.disabled =
+    true;
+
+
+  if (
+    userAnswer ===
+    normalizeAnswer(
+      question.english
+    )
+  ) {
+
+    state.correct++;
+
+    wordFeedback.className =
+      "feedback correct mt-3";
+
+    wordFeedback.innerHTML =
+      "🎉 बरोबर! खूप छान!";
+
+    correctSound();
+
+  } else {
+
+    state.wrong++;
+
+    wordFeedback.className =
+      "feedback wrong mt-3";
+
+    wordFeedback.innerHTML = `
+      ❌ चुकीचे! योग्य उत्तर:
+      <strong class="ms-1">
+        ${question.english}
+      </strong>
+    `;
+
+    wrongSound(
+      question.english
+    );
+
+  }
+
+
+  correctScore.textContent =
+    state.correct;
+
+  wrongScore.textContent =
+    state.wrong;
+
+  wordNextBtn.disabled =
+    false;
+
+}
+
+
+/* =========================================================
+   WORD - NEXT
+========================================================= */
+
+function nextWordQuestion() {
+
+  if (
+    !state.answered
+  ) {
+
+    return;
+
+  }
+
+  state.currentIndex++;
+
+  if (
+    state.currentIndex >=
+    state.totalQuestions
+  ) {
+
+    showResult();
+
+    return;
+
+  }
+
+  loadWordQuestion();
+
+}
+
+
+wordCheckBtn.addEventListener(
+  "click",
+  checkWordAnswer
+);
+
+
+wordInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      checkWordAnswer();
+
+    }
+
+  }
+);
+
+
+wordNextBtn.addEventListener(
+  "click",
+  nextWordQuestion
+);
+
+
+wordSpeakBtn.addEventListener(
+  "click",
+  () => {
+
+    const question =
+      state.questions[
+        state.currentIndex
+      ];
+
+    if (question) {
+
+      speakText(
+        question.marathi,
+        "mr-IN",
+        0.7
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+function showResult() {
+
+  updateScoreUI();
+
+  state.answered =
     true;
 
 
   const score =
-    quizState.correct;
+    state.correct;
 
   const total =
-    quizState.totalQuestions;
-
+    state.totalQuestions;
 
   const percentage =
     Math.round(
-      (score / total) * 100
+      (score / total) *
+      100
     );
 
 
@@ -2594,19 +3393,19 @@ function showQuizResult() {
   ) {
 
     message =
-      "🌟 Excellent! अजून थोडा सराव करा.";
+      "🌟 Excellent! तुमची प्रगती खूप चांगली आहे.";
 
   } else if (
     percentage >= 60
   ) {
 
     message =
-      "👍 Very Good! तुमची प्रगती चांगली आहे.";
+      "👍 Very Good! अजून थोडा सराव करा.";
 
   } else {
 
     message =
-      "💪 पुन्हा प्रयत्न करा. तुम्ही नक्कीच शिकाल!";
+      "💪 पुन्हा प्रयत्न करा. तुम्ही नक्की शिकाल!";
 
   }
 
@@ -2615,12 +3414,8 @@ function showQuizResult() {
     message;
 
 
-  const oldBest =
-    getBest("quiz");
-
-
-  setBest(
-    "quiz",
+  saveBestScore(
+    state.mode,
     score
   );
 
@@ -2628,7 +3423,9 @@ function showQuizResult() {
   bestScore.textContent =
     Math.max(
       score,
-      oldBest
+      getBestScore(
+        state.mode
+      )
     );
 
 
@@ -2641,85 +3438,80 @@ function showQuizResult() {
     behavior: "smooth"
   });
 
+
+  speakText(
+    `तुमचा स्कोअर ${score} पैकी ${total}`,
+    "mr-IN",
+    0.75
+  );
+
 }
 
 
 /* =========================================================
-   QUIZ RESTART
+   RESTART
 ========================================================= */
 
-function restartQuiz() {
+function restartCurrentMode() {
 
-  quizState.currentIndex =
-    0;
-
-  quizState.correct =
-    0;
-
-  quizState.wrong =
-    0;
-
-  quizState.answered =
-    false;
-
-
-  resultCard.classList.add(
-    "d-none"
+  startMode(
+    state.mode
   );
-
-
-  createQuizQuestions();
-
-  loadQuizQuestion();
 
 }
 
 
 restartBtn.addEventListener(
   "click",
-  restartQuiz
+  restartCurrentMode
 );
 
 
 playAgainBtn.addEventListener(
   "click",
-  restartQuiz
+  restartCurrentMode
 );
 
 
 /* =========================================================
-   QUIZ LETTER CHANGE
+   LETTER CHANGE
 ========================================================= */
 
 letterSelect.addEventListener(
   "change",
   event => {
 
-    quizState.selectedLetter =
+    state.selectedLetter =
       event.target.value;
 
     updateReferenceTable();
 
-    restartQuiz();
+    startMode(
+      state.mode
+    );
 
   }
 );
 
 
 /* =========================================================
-   QUIZ QUESTION COUNT
+   QUESTION COUNT
 ========================================================= */
 
 questionCountSelect.addEventListener(
   "change",
   event => {
 
-    quizState.totalQuestions =
+    state.totalQuestions =
       Number(
         event.target.value
       );
 
-    restartQuiz();
+    saveSettings();
+
+    startMode(
+      state.mode
+    );
 
   }
 );
@@ -2729,1065 +3521,167 @@ questionCountSelect.addEventListener(
    REFERENCE TABLE
 ========================================================= */
 
-function populateReferenceMenu() {
-
-  referenceSelect.innerHTML = "";
-
-  Object.keys(chaudakhadi).forEach(letter => {
-
-    const option =
-      document.createElement("option");
-
-    option.value =
-      letter;
-
-    option.textContent =
-      `${letter} - ${chaudakhadi[letter][0][1]}`;
-
-    referenceSelect.appendChild(option);
-
-  });
-
-  referenceSelect.value =
-    "क";
-
-}
-
-
 function updateReferenceTable() {
 
   referenceTable.innerHTML =
     "";
 
-  const selectedLetter =
-    referenceSelect.value ||
-    "क";
 
-  const data =
-    chaudakhadi[selectedLetter] ||
-    chaudakhadi["क"];
+  if (
+    state.selectedLetter ===
+    "ALL"
+  ) {
 
-
-  data.forEach(item => {
-
-    const row =
-      document.createElement("tr");
-
-
-    row.innerHTML = `
-      <td class="reference-marathi">
-        ${item[0]}
-      </td>
-
-      <td class="reference-english">
-        ${item[1]}
-      </td>
+    referenceTable.innerHTML = `
+      <tr>
+        <td colspan="2"
+            class="text-muted">
+          सर्व अक्षरे निवडलेली आहेत.
+          Practice मध्ये सर्व अक्षरांमधून
+          प्रश्न येतील.
+        </td>
+      </tr>
     `;
 
+    return;
 
-    referenceTable.appendChild(row);
+  }
 
-  });
-
-}
-
-
-referenceSelect.addEventListener(
-  "change",
-  updateReferenceTable
-);
-
-
-/* =========================================================
-   14 KHADI PRACTICE
-========================================================= */
-
-function createPracticeQuestions() {
 
   const data =
     chaudakhadi[
-      practiceState.selectedLetter
+      state.selectedLetter
     ];
 
 
-  const shuffled =
-    shuffle(data);
+  data.forEach(
+    item => {
 
+      const row =
+        document.createElement(
+          "tr"
+        );
 
-  const questions = [];
+      row.innerHTML = `
+        <td class="reference-marathi">
+          ${item[0]}
+        </td>
 
+        <td class="reference-english">
+          ${item[1]}
+        </td>
+      `;
 
-  for (
-    let i = 0;
-    i < practiceState.totalQuestions;
-    i++
-  ) {
+      referenceTable.appendChild(
+        row
+      );
 
-    questions.push(
-      shuffled[
-        i % shuffled.length
-      ]
-    );
-
-  }
-
-
-  practiceState.questions =
-    shuffle(questions)
-      .map(item => ({
-
-        marathi:
-          item[0],
-
-        english:
-          item[1]
-
-      }));
+    }
+  );
 
 }
 
 
 /* =========================================================
-   PRACTICE UI
+   RESTORE SETTINGS
 ========================================================= */
 
-function updatePracticeUI() {
+function restoreSettings() {
 
-  practiceQuestionNumber.textContent =
-    `${Math.min(
-      practiceState.currentIndex + 1,
-      practiceState.totalQuestions
-    )} / ${practiceState.totalQuestions}`;
-
-
-  practiceCorrect.textContent =
-    practiceState.correct;
-
-  practiceWrong.textContent =
-    practiceState.wrong;
-
-
-  const percent =
-    Math.round(
-      (
-        practiceState.currentIndex /
-        practiceState.totalQuestions
-      ) * 100
-    );
-
-
-  practiceProgressBar.style.width =
-    `${percent}%`;
-
-  practiceProgressPercent.textContent =
-    `${percent}%`;
-
-
-  practiceBestScore.textContent =
-    getBest("practice14");
-
-}
-
-
-/* =========================================================
-   PRACTICE LOAD
-========================================================= */
-
-function loadPracticeQuestion() {
-
-  if (
-    practiceState.currentIndex >=
-    practiceState.questions.length
-  ) {
-
-    showPracticeResult();
-
-    return;
-
-  }
-
-
-  practiceState.answered =
-    false;
-
-
-  practiceLetter.textContent =
-    practiceState.questions[
-      practiceState.currentIndex
-    ].marathi;
-
-
-  practiceAnswer.value =
-    "";
-
-
-  practiceAnswer.disabled =
-    false;
-
-
-  practiceCheckBtn.disabled =
-    false;
-
-
-  practiceNextBtn.disabled =
-    true;
-
-
-  practiceFeedback.textContent =
-    "";
-
-  practiceFeedback.className =
-    "feedback mt-3";
-
-
-  updatePracticeUI();
-
-
-  setTimeout(() => {
-
-    practiceAnswer.focus();
-
-  }, 100);
-
-}
-
-
-/* =========================================================
-   PRACTICE CHECK
-========================================================= */
-
-function checkPracticeAnswer() {
-
-  if (
-    practiceState.answered
-  ) {
-
-    return;
-
-  }
-
-
-  const userAnswer =
-    normalizeAnswer(
-      practiceAnswer.value
-    );
-
-
-  if (!userAnswer) {
-
-    practiceFeedback.className =
-      "feedback wrong mt-3";
-
-    practiceFeedback.innerHTML =
-      "✍️ कृपया उत्तर लिहा.";
-
-    practiceAnswer.focus();
-
-    return;
-
-  }
-
-
-  const question =
-    practiceState.questions[
-      practiceState.currentIndex
-    ];
-
-
-  practiceState.answered =
-    true;
-
-
-  practiceAnswer.disabled =
-    true;
-
-  practiceCheckBtn.disabled =
-    true;
+  const stored =
+    getStorage();
 
 
   if (
-    userAnswer ===
-    normalizeAnswer(
-      question.english
+    stored.mode &&
+    [
+      "typing",
+      "quiz",
+      "words"
+    ].includes(
+      stored.mode
     )
   ) {
 
-    practiceState.correct++;
-
-
-    practiceFeedback.className =
-      "feedback correct mt-3";
-
-    practiceFeedback.innerHTML =
-      "🎉 बरोबर! खूप छान!";
-
-  } else {
-
-    practiceState.wrong++;
-
-
-    practiceFeedback.className =
-      "feedback wrong mt-3";
-
-    practiceFeedback.innerHTML = `
-      ❌ चुकीचे!
-      योग्य spelling:
-      <strong class="ms-1">
-        ${question.english}
-      </strong>
-    `;
+    state.mode =
+      stored.mode;
 
   }
-
-
-  practiceNextBtn.disabled =
-    false;
-
-
-  updatePracticeUI();
-
-}
-
-
-/* =========================================================
-   PRACTICE NEXT
-========================================================= */
-
-function nextPracticeQuestion() {
-
-  if (
-    !practiceState.answered
-  ) {
-
-    return;
-
-  }
-
-
-  practiceState.currentIndex++;
 
 
   if (
-    practiceState.currentIndex >=
-    practiceState.totalQuestions
-  ) {
-
-    showPracticeResult();
-
-    return;
-
-  }
-
-
-  loadPracticeQuestion();
-
-}
-
-
-practiceCheckBtn.addEventListener(
-  "click",
-  checkPracticeAnswer
-);
-
-
-practiceNextBtn.addEventListener(
-  "click",
-  nextPracticeQuestion
-);
-
-
-/* ENTER KEY - PRACTICE */
-
-practiceAnswer.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.key === "Enter"
-    ) {
-
-      if (
-        !practiceState.answered
-      ) {
-
-        checkPracticeAnswer();
-
-      } else {
-
-        nextPracticeQuestion();
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   PRACTICE RESULT
-========================================================= */
-
-function showPracticeResult() {
-
-  const score =
-    practiceState.correct;
-
-  const total =
-    practiceState.totalQuestions;
-
-
-  const percentage =
-    Math.round(
-      (score / total) * 100
-    );
-
-
-  setBest(
-    "practice14",
-    score
-  );
-
-
-  practiceBestScore.textContent =
-    getBest("practice14");
-
-
-  practiceFeedback.className =
-    "feedback correct mt-3";
-
-
-  if (
-    percentage === 100
-  ) {
-
-    practiceFeedback.innerHTML =
-      "🏆 Perfect! १४ खडी खूप छान येते!";
-
-  } else if (
-    percentage >= 80
-  ) {
-
-    practiceFeedback.innerHTML =
-      "🌟 Excellent! खूप चांगला सराव!";
-
-  } else if (
-    percentage >= 60
-  ) {
-
-    practiceFeedback.innerHTML =
-      "👍 Very Good! अजून थोडा सराव करा.";
-
-  } else {
-
-    practiceFeedback.innerHTML =
-      "💪 पुन्हा प्रयत्न करा. तुम्ही नक्की शिकाल!";
-
-  }
-
-
-  practiceAnswer.disabled =
-    true;
-
-  practiceCheckBtn.disabled =
-    true;
-
-  practiceNextBtn.disabled =
-    false;
-
-  practiceNextBtn.textContent =
-    "🔄 पुन्हा खेळा";
-
-}
-
-
-/* =========================================================
-   PRACTICE RESTART
-========================================================= */
-
-function restartPractice() {
-
-  practiceState.currentIndex =
-    0;
-
-  practiceState.correct =
-    0;
-
-  practiceState.wrong =
-    0;
-
-  practiceState.answered =
-    false;
-
-
-  practiceNextBtn.textContent =
-    "पुढचा प्रश्न →";
-
-
-  createPracticeQuestions();
-
-  loadPracticeQuestion();
-
-}
-
-
-practiceLetterSelect.addEventListener(
-  "change",
-  event => {
-
-    practiceState.selectedLetter =
-      event.target.value;
-
-    restartPractice();
-
-  }
-);
-
-
-practiceQuestionCount.addEventListener(
-  "change",
-  event => {
-
-    practiceState.totalQuestions =
-      Number(
-        event.target.value
-      );
-
-    restartPractice();
-
-  }
-);
-
-
-/* =========================================================
-   PRACTICE NEXT AFTER COMPLETE
-========================================================= */
-
-practiceNextBtn.addEventListener(
-  "click",
-  () => {
-
-    if (
-      practiceState.currentIndex >=
-      practiceState.questions.length - 1 &&
-      practiceState.answered
-    ) {
-
-      restartPractice();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   WORD PRACTICE
-========================================================= */
-
-function createWordQuestions() {
-
-  const shuffled =
-    shuffle(wordData);
-
-
-  const selected = [];
-
-
-  for (
-    let i = 0;
-    i < wordState.totalQuestions;
-    i++
-  ) {
-
-    selected.push(
-      shuffled[
-        i % shuffled.length
+    stored.selectedLetter &&
+    (
+      stored.selectedLetter ===
+      "ALL" ||
+      chaudakhadi[
+        stored.selectedLetter
       ]
-    );
-
-  }
-
-
-  wordState.questions =
-    selected.map(item => ({
-
-      marathi:
-        item[0],
-
-      english:
-        item[1]
-
-    }));
-
-}
-
-
-/* =========================================================
-   WORD UI
-========================================================= */
-
-function updateWordUI() {
-
-  wordQuestionNumber.textContent =
-    `${Math.min(
-      wordState.currentIndex + 1,
-      wordState.totalQuestions
-    )} / ${wordState.totalQuestions}`;
-
-
-  wordCorrect.textContent =
-    wordState.correct;
-
-  wordWrong.textContent =
-    wordState.wrong;
-
-
-  const percent =
-    Math.round(
-      (
-        wordState.currentIndex /
-        wordState.totalQuestions
-      ) * 100
-    );
-
-
-  wordProgressBar.style.width =
-    `${percent}%`;
-
-  wordProgressPercent.textContent =
-    `${percent}%`;
-
-
-  wordBestScore.textContent =
-    getBest("word");
-
-}
-
-
-/* =========================================================
-   LOAD WORD
-========================================================= */
-
-function loadWordQuestion() {
-
-  if (
-    wordState.currentIndex >=
-    wordState.questions.length
-  ) {
-
-    showWordResult();
-
-    return;
-
-  }
-
-
-  wordState.answered =
-    false;
-
-
-  const question =
-    wordState.questions[
-      wordState.currentIndex
-    ];
-
-
-  wordMarathi.textContent =
-    question.marathi;
-
-
-  wordAnswer.value =
-    "";
-
-
-  wordAnswer.disabled =
-    false;
-
-
-  wordCheckBtn.disabled =
-    false;
-
-
-  wordNextBtn.disabled =
-    true;
-
-
-  wordNextBtn.textContent =
-    "पुढचा शब्द →";
-
-
-  wordFeedback.textContent =
-    "";
-
-  wordFeedback.className =
-    "feedback mt-3";
-
-
-  updateWordUI();
-
-
-  setTimeout(() => {
-
-    wordAnswer.focus();
-
-  }, 100);
-
-}
-
-
-/* =========================================================
-   WORD CHECK
-========================================================= */
-
-function checkWordAnswer() {
-
-  if (
-    wordState.answered
-  ) {
-
-    return;
-
-  }
-
-
-  const userAnswer =
-    normalizeAnswer(
-      wordAnswer.value
-    );
-
-
-  if (!userAnswer) {
-
-    wordFeedback.className =
-      "feedback wrong mt-3";
-
-    wordFeedback.innerHTML =
-      "✍️ कृपया English spelling लिहा.";
-
-    wordAnswer.focus();
-
-    return;
-
-  }
-
-
-  const question =
-    wordState.questions[
-      wordState.currentIndex
-    ];
-
-
-  wordState.answered =
-    true;
-
-
-  wordAnswer.disabled =
-    true;
-
-  wordCheckBtn.disabled =
-    true;
-
-
-  if (
-    userAnswer ===
-    normalizeAnswer(
-      question.english
     )
   ) {
 
-    wordState.correct++;
-
-
-    wordFeedback.className =
-      "feedback correct mt-3";
-
-    wordFeedback.innerHTML =
-      "🎉 Correct! खूप छान!";
-
-  } else {
-
-    wordState.wrong++;
-
-
-    wordFeedback.className =
-      "feedback wrong mt-3";
-
-    wordFeedback.innerHTML = `
-      ❌ Wrong!
-      योग्य spelling:
-      <strong class="ms-1">
-        ${question.english}
-      </strong>
-    `;
+    state.selectedLetter =
+      stored.selectedLetter;
 
   }
-
-
-  wordNextBtn.disabled =
-    false;
-
-
-  updateWordUI();
-
-}
-
-
-wordCheckBtn.addEventListener(
-  "click",
-  checkWordAnswer
-);
-
-
-/* =========================================================
-   WORD NEXT
-========================================================= */
-
-function nextWordQuestion() {
-
-  if (
-    !wordState.answered
-  ) {
-
-    return;
-
-  }
-
-
-  wordState.currentIndex++;
 
 
   if (
-    wordState.currentIndex >=
-    wordState.totalQuestions
+    stored.totalQuestions
   ) {
 
-    showWordResult();
-
-    return;
-
-  }
-
-
-  loadWordQuestion();
-
-}
-
-
-wordNextBtn.addEventListener(
-  "click",
-  nextWordQuestion
-);
-
-
-/* ENTER KEY - WORD */
-
-wordAnswer.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.key === "Enter"
-    ) {
-
-      if (
-        !wordState.answered
-      ) {
-
-        checkWordAnswer();
-
-      } else {
-
-        nextWordQuestion();
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   WORD RESULT
-========================================================= */
-
-function showWordResult() {
-
-  const score =
-    wordState.correct;
-
-  const total =
-    wordState.totalQuestions;
-
-
-  const percentage =
-    Math.round(
-      (score / total) * 100
-    );
-
-
-  setBest(
-    "word",
-    score
-  );
-
-
-  wordBestScore.textContent =
-    getBest("word");
-
-
-  wordAnswer.disabled =
-    true;
-
-  wordCheckBtn.disabled =
-    true;
-
-  wordNextBtn.disabled =
-    false;
-
-
-  wordNextBtn.textContent =
-    "🔄 पुन्हा खेळा";
-
-
-  if (
-    percentage === 100
-  ) {
-
-    wordFeedback.className =
-      "feedback correct mt-3";
-
-    wordFeedback.innerHTML =
-      "🏆 Perfect! सर्व spelling बरोबर!";
-
-  } else if (
-    percentage >= 80
-  ) {
-
-    wordFeedback.className =
-      "feedback correct mt-3";
-
-    wordFeedback.innerHTML =
-      "🌟 Excellent! खूप छान!";
-
-  } else if (
-    percentage >= 60
-  ) {
-
-    wordFeedback.className =
-      "feedback correct mt-3";
-
-    wordFeedback.innerHTML =
-      "👍 Very Good! अजून थोडा सराव करा.";
-
-  } else {
-
-    wordFeedback.className =
-      "feedback wrong mt-3";
-
-    wordFeedback.innerHTML =
-      "💪 पुन्हा प्रयत्न करा!";
-
-  }
-
-}
-
-
-/* =========================================================
-   WORD RESTART
-========================================================= */
-
-function restartWordPractice() {
-
-  wordState.currentIndex =
-    0;
-
-  wordState.correct =
-    0;
-
-  wordState.wrong =
-    0;
-
-  wordState.answered =
-    false;
-
-
-  createWordQuestions();
-
-  loadWordQuestion();
-
-}
-
-
-wordQuestionCount.addEventListener(
-  "change",
-  event => {
-
-    wordState.totalQuestions =
+    const count =
       Number(
-        event.target.value
+        stored.totalQuestions
       );
 
-    restartWordPractice();
-
-  }
-);
-
-
-wordNextBtn.addEventListener(
-  "click",
-  () => {
-
     if (
-      wordState.currentIndex >=
-      wordState.questions.length - 1 &&
-      wordState.answered
+      [10, 14, 20]
+        .includes(count)
     ) {
 
-      restartWordPractice();
+      state.totalQuestions =
+        count;
 
     }
 
   }
-);
+
+
+  letterSelect.value =
+    state.selectedLetter;
+
+  questionCountSelect.value =
+    String(
+      state.totalQuestions
+    );
+
+}
 
 
 /* =========================================================
-   START APPLICATION
+   INITIALIZE
 ========================================================= */
 
 function init() {
 
-  initializeLetterDropdowns();
-  populateReferenceMenu();
+  initializeLetterDropdown();
 
+  restoreSettings();
 
   letterSelect.value =
-    quizState.selectedLetter;
+    state.selectedLetter;
 
-  practiceLetterSelect.value =
-    practiceState.selectedLetter;
-
-
-  referenceSelect.value =
-    "क";
+  questionCountSelect.value =
+    String(
+      state.totalQuestions
+    );
 
   updateReferenceTable();
 
-
-  practiceBestScore.textContent =
-    getBest("practice14");
-
-  wordBestScore.textContent =
-    getBest("word");
-
-
-  restartPractice();
-
-  restartQuiz();
-
-  restartWordPractice();
+  startMode(
+    state.mode
+  );
 
 }
 
