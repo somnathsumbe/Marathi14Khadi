@@ -26,6 +26,7 @@
       min-height: 100vh;
       background: #f4f7fb;
       font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     .app-container {
@@ -64,6 +65,7 @@
       background: #fff;
       padding: 12px;
       border-bottom: 1px solid #eee;
+      z-index: 1030;
     }
 
     .menu-btn {
@@ -75,6 +77,10 @@
     .menu-btn.active {
       background: #0d6efd;
       color: #fff;
+    }
+
+    .menu-btn .menu-label {
+      display: block;
     }
 
     /* SCORE */
@@ -343,6 +349,10 @@
     /* MOBILE */
     @media (max-width: 576px) {
 
+      body {
+        padding-bottom: calc(78px + env(safe-area-inset-bottom));
+      }
+
       .app-container {
         margin: 10px;
       }
@@ -386,6 +396,33 @@
 
       .menu-btn {
         font-size: 14px;
+        min-height: 58px;
+        padding: 6px 2px;
+      }
+
+      .main-menu {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+        border-top: 1px solid #dee2e6;
+        border-bottom: 0;
+        box-shadow: 0 -5px 18px rgba(0, 0, 0, 0.1);
+      }
+
+      .main-menu .row {
+        flex-wrap: nowrap;
+      }
+
+      .main-menu [class*="col-"] {
+        width: 25%;
+        padding-right: 3px;
+        padding-left: 3px;
+      }
+
+      .menu-btn .menu-label {
+        font-size: 11px;
       }
 
       .reference-grid {
@@ -426,6 +463,18 @@
         <div class="col-12 col-md-3">
 
           <button
+            id="menuReference"
+            class="btn btn-outline-primary w-100 menu-btn">
+
+            📖 १४ खडी Reference
+
+          </button>
+
+        </div>
+
+        <div class="col-12 col-md-3">
+
+          <button
             id="menuTyping"
             class="btn btn-outline-primary w-100 menu-btn active">
 
@@ -441,7 +490,7 @@
             id="menuQuiz"
             class="btn btn-outline-primary w-100 menu-btn">
 
-            🧠 Quiz
+            🎯 Quiz
 
           </button>
 
@@ -454,18 +503,6 @@
             class="btn btn-outline-primary w-100 menu-btn">
 
             📝 Word Practice
-
-          </button>
-
-        </div>
-
-        <div class="col-12 col-md-3">
-
-          <button
-            id="menuReference"
-            class="btn btn-outline-primary w-100 menu-btn">
-
-            📖 १४ खडी Reference
 
           </button>
 
@@ -496,7 +533,7 @@
 
         </div>
 
-        <div id="questionCountSetting" class="col-6">
+        <div id="questionCountSetting" class="col-12 col-md-6">
 
           <label class="form-label fw-bold">
             प्रश्न
@@ -1010,8 +1047,6 @@
           <tbody id="referenceTable">
 
           </tbody>
-
-        </table>
 
         </table>
 
@@ -1564,12 +1599,55 @@ const chaudakhadi = {
 
 };
 
-const khadiQuestions = Object.values(chaudakhadi)
-  .flat()
-  .map(item => ({
-    marathi: item[0],
-    english: item[1]
+const khadiForms = [
+  { suffix: "", english: "a" },
+  { suffix: "ा", english: "aa" },
+  { suffix: "ि", english: "i" },
+  { suffix: "ी", english: "ee" },
+  { suffix: "ु", english: "u" },
+  { suffix: "ू", english: "oo" },
+  { suffix: "े", english: "e" },
+  { suffix: "ै", english: "ai" },
+  { suffix: "ो", english: "o" },
+  { suffix: "ौ", english: "au" },
+  { suffix: "ं", english: "am" },
+  { suffix: "ः", english: "ah" },
+  { suffix: "ॅ", english: "ya" },
+  { suffix: "ॉ", english: "aw" }
+];
+
+const khadiBaseLetters = [
+  ...Object.keys(chaudakhadi),
+  "क्ष",
+  "त्र",
+  "ज्ञ"
+].filter((letter, index, letters) =>
+  letters.indexOf(letter) === index
+);
+
+const baseEnglishOverrides = {
+  "क्ष": "Ksha",
+  "त्र": "Tra",
+  "ज्ञ": "Dnya"
+};
+
+function getCanonicalKhadi(letter) {
+  const base = baseEnglishOverrides[letter]
+    || chaudakhadi[letter]?.[0]?.[1]
+    || "Ka";
+  const prefix = base.endsWith("a")
+    ? base.slice(0, -1)
+    : base;
+
+  return khadiForms.map(form => ({
+    marathi: `${letter}${form.suffix}`,
+    english: `${prefix}${form.english}`
   }));
+}
+
+const khadiQuestions = khadiBaseLetters.flatMap(
+  getCanonicalKhadi
+);
 
 let lastQuestion = null;
 
@@ -2239,24 +2317,12 @@ const referenceTable =
 
 
 const referenceLetters =
-  Object.keys(chaudakhadi);
+  khadiBaseLetters;
 
-const referenceForms = [
-  { suffix: "", english: "Ka" },
-  { suffix: "ा", english: "Kaa" },
-  { suffix: "ि", english: "Ki" },
-  { suffix: "ी", english: "Kee" },
-  { suffix: "ु", english: "Ku" },
-  { suffix: "ू", english: "Koo" },
-  { suffix: "े", english: "Ke" },
-  { suffix: "ै", english: "Kai" },
-  { suffix: "ो", english: "Ko" },
-  { suffix: "ौ", english: "Kau" },
-  { suffix: "ं", english: "Kam" },
-  { suffix: "ः", english: "Kah" },
-  { suffix: "ॅ", english: "Kya" },
-  { suffix: "ॉ", english: "Kaw" }
-];
+const referenceForms = khadiForms.map(form => ({
+  suffix: form.suffix,
+  english: `K${form.english}`
+}));
 
 
 /* =========================================================
@@ -2292,6 +2358,60 @@ const state = {
 
 const sessionBestScores = {};
 
+const progressStorageKey =
+  "marathi14KhadiProgress";
+
+const progressStore = {
+  practiceScore: 0,
+  quizScore: 0,
+  correctAnswers: 0,
+  wrongAnswers: 0,
+  practiceHistory: [],
+  quizHistory: [],
+  lastQuestion: null
+};
+
+function loadProgress() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(progressStorageKey) || "null"
+    );
+
+    if (saved) {
+      Object.assign(progressStore, saved);
+      sessionBestScores.typing = Number(saved.practiceScore || 0);
+      sessionBestScores.quiz = Number(saved.quizScore || 0);
+    }
+  } catch (error) {
+    // Use a fresh in-memory progress store when storage is unavailable.
+  }
+}
+
+function saveProgress() {
+  const modeKey = state.mode === "quiz"
+    ? "quizScore"
+    : "practiceScore";
+
+  progressStore[modeKey] = Math.max(
+    Number(progressStore[modeKey] || 0),
+    state.correct
+  );
+  progressStore.correctAnswers = state.correct;
+  progressStore.wrongAnswers = state.wrong;
+  progressStore.lastQuestion = state.questions[
+    state.currentIndex
+  ]?.marathi || null;
+
+  try {
+    localStorage.setItem(
+      progressStorageKey,
+      JSON.stringify(progressStore)
+    );
+  } catch (error) {
+    // The app continues normally when storage is unavailable.
+  }
+}
+
 function getBestScore(mode) {
   return Number(sessionBestScores[mode] || 0);
 }
@@ -2301,6 +2421,8 @@ function saveBestScore(mode, score) {
 
   if (score > previousBest) {
     sessionBestScores[mode] = score;
+    progressStore[mode === "quiz" ? "quizScore" : "practiceScore"] = score;
+    saveProgress();
   }
 }
 
@@ -2355,10 +2477,9 @@ function speakText(
 
 function correctSound() {
 
-  speakText(
-    "बरोबर! खूप छान!",
-    "mr-IN",
-    0.8
+  playFeedbackSound(
+    "./sounds/correct.mp3",
+    "बरोबर! खूप छान!"
   );
 
 }
@@ -2366,10 +2487,23 @@ function correctSound() {
 
 function wrongSound(answer) {
 
-  speakText(
-    `चुकीचे. योग्य उत्तर ${answer}`,
-    "mr-IN",
-    0.8
+  playFeedbackSound(
+    "./sounds/wrong.mp3",
+    `चुकीचे. योग्य उत्तर ${answer}`
+  );
+
+}
+function playFeedbackSound(file, fallbackText) {
+  const audio = new Audio(file);
+
+  audio.addEventListener(
+    "error",
+    () => speakText(fallbackText, "mr-IN", 0.8),
+    { once: true }
+  );
+
+  audio.play().catch(
+    () => speakText(fallbackText, "mr-IN", 0.8)
   );
 
 }
@@ -2637,6 +2771,8 @@ function updateScoreUI() {
   progressPercent.textContent =
     `${percent}%`;
 
+  saveProgress();
+
 }
 
 
@@ -2697,7 +2833,7 @@ function startMode(mode) {
       "d-none-custom"
     );
 
-    letterSetting.classList.remove(
+    letterSetting.classList.add(
       "d-none-custom"
     );
 
@@ -2733,7 +2869,7 @@ function startMode(mode) {
       "d-none-custom"
     );
 
-    letterSetting.classList.remove(
+    letterSetting.classList.add(
       "d-none-custom"
     );
 
@@ -4009,21 +4145,7 @@ function updateReferenceTable() {
 
 
 function getReferenceKhadi(letter) {
-
-  const baseEnglish =
-    chaudakhadi[letter]?.[0]?.[1] || "Ka";
-
-  const englishPrefix =
-    baseEnglish.endsWith("a")
-      ? baseEnglish.slice(0, -1)
-      : baseEnglish;
-
-  return referenceForms.map(
-    form => ({
-      marathi: `${letter}${form.suffix}`,
-      english: form.english.replace(/^K/, englishPrefix)
-    })
-  );
+  return getCanonicalKhadi(letter);
 
 }
 
@@ -4110,6 +4232,8 @@ function registerServiceWorker() {
 ========================================================= */
 
 function init() {
+
+  loadProgress();
 
   initializeLetterDropdown();
   initializeReferenceDropdown();
