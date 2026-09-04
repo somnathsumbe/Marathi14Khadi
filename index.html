@@ -1564,6 +1564,31 @@ const chaudakhadi = {
 
 };
 
+const khadiQuestions = Object.values(chaudakhadi)
+  .flat()
+  .map(item => ({
+    marathi: item[0],
+    english: item[1]
+  }));
+
+let lastQuestion = null;
+
+function getRandomQuestion() {
+  let question;
+
+  do {
+    question = khadiQuestions[
+      Math.floor(Math.random() * khadiQuestions.length)
+    ];
+  } while (
+    khadiQuestions.length > 1 &&
+    question.marathi === lastQuestion
+  );
+
+  lastQuestion = question.marathi;
+  return question;
+}
+
 
 /* =========================================================
    WORD DATA
@@ -2459,54 +2484,6 @@ function initializeLetterDropdown() {
 
 function createTypingQuestions() {
 
-  let data = [];
-
-  if (
-    state.selectedLetter ===
-    "ALL"
-  ) {
-
-    Object.keys(chaudakhadi)
-      .forEach(letter => {
-
-        chaudakhadi[letter]
-          .forEach(item => {
-
-            data.push({
-
-              marathi:
-                item[0],
-
-              english:
-                item[1]
-
-            });
-
-          });
-
-      });
-
-  } else {
-
-    data =
-      chaudakhadi[
-        state.selectedLetter
-      ].map(item => ({
-
-        marathi:
-          item[0],
-
-        english:
-          item[1]
-
-      }));
-
-  }
-
-
-  const shuffled =
-    shuffle(data);
-
   const result = [];
 
   for (
@@ -2516,15 +2493,12 @@ function createTypingQuestions() {
   ) {
 
     result.push(
-      shuffled[
-        i % shuffled.length
-      ]
+      getRandomQuestion()
     );
 
   }
 
-  state.questions =
-    shuffle(result);
+  state.questions = result;
 
 }
 
@@ -2534,55 +2508,6 @@ function createTypingQuestions() {
 ========================================================= */
 
 function createQuizQuestions() {
-
-  let data = [];
-
-  if (
-    state.selectedLetter ===
-    "ALL"
-  ) {
-
-    Object.keys(chaudakhadi)
-      .forEach(letter => {
-
-        chaudakhadi[letter]
-          .forEach(item => {
-
-            data.push({
-
-              marathi:
-                item[0],
-
-              english:
-                item[1]
-
-            });
-
-          });
-
-      });
-
-  } else {
-
-    data =
-      chaudakhadi[
-        state.selectedLetter
-      ].map(item => ({
-
-        marathi:
-          item[0],
-
-        english:
-          item[1]
-
-      }));
-
-  }
-
-
-  const shuffled =
-    shuffle(data);
-
   const selected = [];
 
   for (
@@ -2592,17 +2517,14 @@ function createQuizQuestions() {
   ) {
 
     selected.push(
-      shuffled[
-        i % shuffled.length
-      ]
+      getRandomQuestion()
     );
 
   }
 
 
   state.questions =
-    shuffle(selected)
-      .map(question => {
+    selected.map(question => {
 
         const options = [
           question.english
@@ -2613,7 +2535,7 @@ function createQuizQuestions() {
         ) {
 
           const random =
-            randomItem(data)
+            randomItem(khadiQuestions)
               .english;
 
           if (
@@ -2725,6 +2647,8 @@ function updateScoreUI() {
 function resetState() {
 
   state.currentIndex = 0;
+
+  lastQuestion = null;
 
   state.correct = 0;
 
