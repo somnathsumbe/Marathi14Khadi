@@ -184,26 +184,6 @@
       min-width: 44px;
     }
 
-    .speak-btn.listening {
-      background: #dc3545;
-      border-color: #dc3545;
-      color: #fff;
-    }
-
-    .voice-action-btn {
-      min-height: 46px;
-      min-width: 44px;
-      border-radius: 14px;
-      font-weight: 700;
-      padding: 10px 18px;
-    }
-
-    .voice-action-btn.listening {
-      background: #dc3545;
-      border-color: #dc3545;
-      color: #fff;
-    }
-
     /* TYPING */
     .answer-input {
       max-width: 500px;
@@ -851,21 +831,10 @@
               id="typingSpeakBtn"
               class="btn btn-warning speak-btn"
               type="button"
-              aria-label="उत्तर ऐका"
-              title="उत्तर ऐका">
+              aria-label="अक्षर ऐका"
+              title="अक्षर ऐका">
 
               🔊 ऐका
-
-            </button>
-
-            <button
-              id="typingVoiceBtn"
-              class="btn btn-outline-primary voice-action-btn"
-              type="button"
-              aria-label="बोलून लिहा"
-              title="बोलून लिहा">
-
-              🎤 बोलून लिहा
 
             </button>
 
@@ -1036,21 +1005,10 @@
               id="wordSpeakBtn"
               class="btn btn-warning speak-btn"
               type="button"
-              aria-label="उत्तर ऐका"
-              title="उत्तर ऐका">
+              aria-label="शब्द ऐका"
+              title="शब्द ऐका">
 
               🔊 ऐका
-
-            </button>
-
-            <button
-              id="wordVoiceBtn"
-              class="btn btn-outline-primary voice-action-btn"
-              type="button"
-              aria-label="बोलून लिहा"
-              title="बोलून लिहा">
-
-              🎤 बोलून लिहा
 
             </button>
 
@@ -2549,9 +2507,6 @@ const typingNextBtn =
 const typingSpeakBtn =
   document.getElementById("typingSpeakBtn");
 
-const typingVoiceBtn =
-  document.getElementById("typingVoiceBtn");
-
 
 /* QUIZ */
 
@@ -2590,9 +2545,6 @@ const wordNextBtn =
 
 const wordSpeakBtn =
   document.getElementById("wordSpeakBtn");
-
-const wordVoiceBtn =
-  document.getElementById("wordVoiceBtn");
 
 
 /* RESULT */
@@ -2735,76 +2687,6 @@ function saveBestScore(mode, score) {
 }
 
 
-/* =========================================================
-   SOUND
-========================================================= */
-
-function speakText(
-  text,
-  lang = "mr-IN",
-  rate = 0.75
-) {
-
-  if (
-    !("speechSynthesis" in window)
-  ) {
-    return false;
-  }
-
-  const speechText = String(text || "").trim();
-
-  if (!speechText) {
-    return false;
-  }
-
-  const synthesis = window.speechSynthesis;
-  synthesis.cancel();
-
-  const speech =
-    new SpeechSynthesisUtterance(
-      speechText
-    );
-
-  speech.lang =
-    lang;
-
-  speech.rate =
-    rate;
-
-  speech.pitch =
-    1.05;
-
-  speech.volume =
-    1;
-
-  const voices = synthesis.getVoices ? synthesis.getVoices() : [];
-  if (lang && lang.toLowerCase().startsWith("mr")) {
-    const marathiVoice = voices.find(voice => /mr/i.test(voice.lang || ""));
-    if (marathiVoice) {
-      speech.voice = marathiVoice;
-    }
-  } else if (lang && lang.toLowerCase().startsWith("en")) {
-    const englishVoice = voices.find(voice => /en/i.test(voice.lang || ""));
-    if (englishVoice) {
-      speech.voice = englishVoice;
-    }
-  }
-
-  synthesis.speak(
-    speech
-  );
-
-  return true;
-
-}
-
-if ("speechSynthesis" in window) {
-  window.speechSynthesis.onvoiceschanged = () => {
-    window.speechSynthesis.getVoices();
-  };
-}
-
-
 function correctSound() {
 
   playFeedbackSound(
@@ -2894,167 +2776,6 @@ function normalizeAnswer(value) {
     .replace(/\s+/g, " ")
     .toLowerCase();
 }
-
-function setVoiceButtonState(button, stateText, listening = false) {
-  if (!button) {
-    return;
-  }
-
-  button.textContent = stateText;
-  button.disabled = listening;
-  button.classList.toggle("listening", listening);
-}
-
-function showSpeechNotice(message) {
-  const notice = document.createElement("div");
-  notice.className = "feedback wrong mt-3";
-  notice.textContent = message;
-
-  const target = document.querySelector("#typingFeedback, #wordFeedback, #quizFeedback") || document.body;
-  target.innerHTML = "";
-  target.appendChild(notice);
-}
-
-function bindVoiceButton(button, onClick) {
-  if (!button) {
-    return;
-  }
-
-  button.type = "button";
-  button.setAttribute("aria-label", button.getAttribute("aria-label") || button.textContent.trim() || "कृती");
-  button.setAttribute("title", button.getAttribute("title") || button.textContent.trim() || "कृती");
-  button.addEventListener("click", onClick);
-  button.addEventListener("keydown", event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      onClick();
-    }
-  });
-}
-
-function startVoiceTyping({ input, language = "en-IN", onText, onInfo, button }) {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition) {
-    const message = "🎤 Voice typing या browser मध्ये उपलब्ध नाही. कृपया keyboard वापरा.";
-    if (onInfo) {
-      onInfo(message);
-    }
-    return null;
-  }
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = language;
-  recognition.interimResults = false;
-  recognition.continuous = true;
-  recognition.maxAlternatives = 1;
-
-  let sessionTimer = null;
-  let active = true;
-
-  const resetListener = () => {
-    if (sessionTimer) {
-      clearTimeout(sessionTimer);
-    }
-    sessionTimer = setTimeout(() => {
-      if (recognition && typeof recognition.stop === "function") {
-        try {
-          recognition.stop();
-        } catch (error) {
-          // Ignore repeated stop calls.
-        }
-      }
-    }, 10000);
-  };
-
-  recognition.onresult = event => {
-    const transcript = Array.from(event.results)
-      .map(result => result[0]?.transcript || "")
-      .join(" ")
-      .trim();
-
-    if (transcript) {
-      const text = normalizeAnswer(transcript);
-      if (input && text) {
-        input.value = text;
-        input.dispatchEvent(new Event("input", { bubbles: true }));
-        if (onText) {
-          onText(text);
-        }
-      }
-      resetListener();
-    }
-  };
-
-  recognition.onerror = event => {
-    const message = event.error === "not-allowed"
-      ? "🎤 Microphone permission आवश्यक आहे. Browser settings मधून microphone permission allow करा."
-      : "🎤 आवाज समजला नाही. पुन्हा प्रयत्न करा.";
-
-    if (button) {
-      setVoiceButtonState(button, "🎤 बोलून लिहा", false);
-    }
-
-    if (onInfo) {
-      onInfo(message);
-    }
-  };
-
-  recognition.onend = () => {
-    if (!active) {
-      return;
-    }
-
-    if (button) {
-      setVoiceButtonState(button, "🎤 बोलून लिहा", false);
-    }
-
-    try {
-      if (active) {
-        recognition.start();
-      }
-    } catch (error) {
-      // Ignore restart errors.
-    }
-  };
-
-  if (button) {
-    setVoiceButtonState(button, "🔴 ऐकत आहे... 10s", false);
-  }
-
-  try {
-    recognition.start();
-    resetListener();
-
-    if (button) {
-      button.addEventListener("click", () => {
-        active = false;
-        if (sessionTimer) {
-          clearTimeout(sessionTimer);
-        }
-        if (typeof recognition.stop === "function") {
-          try {
-            recognition.stop();
-          } catch (error) {
-            // Ignore stop call errors.
-          }
-        }
-        setVoiceButtonState(button, "🎤 बोलून लिहा", false);
-      }, { once: true });
-    }
-
-    return { recognition, stop() { active = false; if (sessionTimer) { clearTimeout(sessionTimer); } if (typeof recognition.stop === "function") { try { recognition.stop(); } catch (error) {} } if (button) { setVoiceButtonState(button, "🎤 बोलून लिहा", false); } } };
-  } catch (error) {
-    if (button) {
-      setVoiceButtonState(button, "🎤 बोलून लिहा", false);
-    }
-    if (onInfo) {
-      onInfo("🎤 आवाज समजला नाही. पुन्हा प्रयत्न करा.");
-    }
-    return null;
-  }
-}
-
 
 /* =========================================================
    LETTER DROPDOWN
@@ -3848,33 +3569,15 @@ typingSpeakBtn.addEventListener(
     if (question) {
 
       speakText(
-        question.english,
-        "en-IN",
-        0.8
+        question.marathi,
+        "mr-IN",
+        0.75
       );
 
     }
 
   }
 );
-
-typingVoiceBtn.addEventListener("click", () => {
-  const question = state.questions[state.currentIndex];
-  if (!question) {
-    return;
-  }
-
-  startVoiceTyping({
-    input: typingInput,
-    language: "en-IN",
-    button: typingVoiceBtn,
-    onInfo: message => {
-      typingFeedback.className = "feedback wrong mt-3";
-      typingFeedback.textContent = message;
-    }
-  });
-});
-
 
 /* =========================================================
    QUIZ - LOAD
@@ -4413,33 +4116,15 @@ wordSpeakBtn.addEventListener(
     if (question) {
 
       speakText(
-        question.english,
-        "en-IN",
-        0.8
+        question.marathi,
+        "mr-IN",
+        0.75
       );
 
     }
 
   }
 );
-
-wordVoiceBtn.addEventListener("click", () => {
-  const question = state.questions[state.currentIndex];
-  if (!question) {
-    return;
-  }
-
-  startVoiceTyping({
-    input: wordInput,
-    language: "en-IN",
-    button: wordVoiceBtn,
-    onInfo: message => {
-      wordFeedback.className = "feedback wrong mt-3";
-      wordFeedback.textContent = message;
-    }
-  });
-});
-
 
 /* =========================================================
    RESULT
@@ -4707,7 +4392,23 @@ function updateReferenceTable() {
         <td class="reference-english">
           ${item[1]}
         </td>
+
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning speak-btn reference-speak-btn"
+            data-marathi-text="${item[0]}"
+            aria-label="${item[0]} ऐका"
+            title="${item[0]} ऐका">
+            🔊 ऐका
+          </button>
+        </td>
       `;
+
+      row.querySelector(".reference-speak-btn").addEventListener(
+        "click",
+        () => speakMarathi(item[0], 0.75)
+      );
 
       referenceTable.appendChild(
         row
@@ -4765,21 +4466,21 @@ function renderReference() {
         <span class="reference-syllable-number">${index + 1}</span>
         <span class="reference-syllable-text">${form.marathi}</span>
         <span class="reference-english">${form.english}</span>
-        <button type="button" class="btn btn-sm btn-outline-warning mt-2 reference-speak-btn" aria-label="${form.marathi} ऐका">🔊 ऐका</button>
+        <button type="button" class="btn btn-sm btn-outline-warning speak-btn mt-2 reference-speak-btn" aria-label="${form.marathi} ऐका">🔊 ऐका</button>
       `;
 
       item.addEventListener("click", event => {
         if (event.target.closest("button")) {
           return;
         }
-        speakText(form.marathi, "mr-IN", 0.7);
+        speakMarathi(form.marathi, 0.7);
       });
 
       item.querySelector(".reference-speak-btn").addEventListener(
         "click",
         event => {
           event.stopPropagation();
-          speakText(form.marathi, "mr-IN", 0.7);
+          speakMarathi(form.marathi, 0.7);
         }
       );
       referenceGrid.appendChild(item);
@@ -4832,7 +4533,7 @@ digitsGrid.addEventListener(
     if (trigger) {
       const value = trigger.dataset.digitSpeech || trigger.textContent.trim();
       if (value) {
-        speakText(value, "mr-IN", 0.75);
+        speakMarathi(value, 0.75);
       }
     }
 
@@ -4846,7 +4547,7 @@ digitsGrid.addEventListener(
       const article = event.target.closest("[data-digit-speech]");
       if (article) {
         event.preventDefault();
-        speakText(article.dataset.digitSpeech, "mr-IN", 0.75);
+        speakMarathi(article.dataset.digitSpeech, 0.75);
       }
     }
   }
