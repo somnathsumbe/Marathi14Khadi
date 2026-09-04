@@ -288,6 +288,42 @@
       padding: 12px;
     }
 
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .reference-syllable {
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #dbe7ff;
+      border-radius: 14px;
+      background: #f8fbff;
+    }
+
+    .reference-syllable-text {
+      color: #0d6efd;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .reference-syllable-number {
+      color: #6c757d;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 992px) {
+      .reference-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
     .reference-marathi {
       font-size: 25px;
       font-weight: 700;
@@ -351,6 +387,15 @@
       .menu-btn {
         font-size: 14px;
       }
+
+      .reference-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .reference-syllable {
+        min-height: 92px;
+      }
     }
   </style>
 </head>
@@ -378,7 +423,7 @@
 
       <div class="row g-2">
 
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
 
           <button
             id="menuTyping"
@@ -390,7 +435,7 @@
 
         </div>
 
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
 
           <button
             id="menuQuiz"
@@ -402,13 +447,25 @@
 
         </div>
 
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
 
           <button
             id="menuWords"
             class="btn btn-outline-primary w-100 menu-btn">
 
             📝 Word Practice
+
+          </button>
+
+        </div>
+
+        <div class="col-12 col-md-3">
+
+          <button
+            id="menuReference"
+            class="btn btn-outline-primary w-100 menu-btn">
+
+            📖 १४ खडी Reference
 
           </button>
 
@@ -439,7 +496,7 @@
 
         </div>
 
-        <div class="col-6">
+        <div id="questionCountSetting" class="col-6">
 
           <label class="form-label fw-bold">
             प्रश्न
@@ -461,7 +518,7 @@
 
 
       <!-- SCORE -->
-      <div class="row g-2 mb-4">
+      <div id="scoreSection" class="row g-2 mb-4">
 
         <div class="col-4">
 
@@ -527,7 +584,7 @@
 
 
       <!-- PROGRESS -->
-      <div class="mb-4">
+      <div id="progressSection" class="mb-4">
 
         <div class="d-flex justify-content-between mb-1">
 
@@ -822,7 +879,7 @@
 
 
       <!-- RESTART -->
-      <div class="text-center mt-4">
+      <div id="restartSection" class="text-center mt-4">
 
         <button
           id="restartBtn"
@@ -898,13 +955,39 @@
 
     <div class="card-body">
 
-      <h4 class="text-center mb-3">
+      <h4 id="referenceHeading" class="text-center mb-3">
 
         📖 १४ खडी Reference
 
       </h4>
 
-      <div class="table-responsive">
+      <div class="mb-3">
+
+        <label for="referenceLetterSelect" class="form-label fw-bold">
+          अक्षर निवडा
+        </label>
+
+        <select id="referenceLetterSelect" class="form-select">
+        </select>
+
+      </div>
+
+      <div id="referenceGrid" class="reference-grid" aria-live="polite">
+      </div>
+
+      <div class="d-flex justify-content-between gap-2 mt-4">
+
+        <button id="referencePreviousBtn" class="btn btn-outline-primary btn-lg flex-fill">
+          ← मागील अक्षर
+        </button>
+
+        <button id="referenceNextBtn" class="btn btn-primary btn-lg flex-fill">
+          पुढील अक्षर →
+        </button>
+
+      </div>
+
+      <div class="d-none">
 
         <table class="table table-bordered">
 
@@ -927,6 +1010,8 @@
           <tbody id="referenceTable">
 
           </tbody>
+
+        </table>
 
         </table>
 
@@ -1652,6 +1737,9 @@ const menuQuiz =
 const menuWords =
   document.getElementById("menuWords");
 
+const menuReference =
+  document.getElementById("menuReference");
+
 const typingView =
   document.getElementById("typingView");
 
@@ -1660,6 +1748,33 @@ const quizView =
 
 const wordView =
   document.getElementById("wordView");
+
+const referenceHeading =
+  document.getElementById("referenceHeading");
+
+const referenceLetterSelect =
+  document.getElementById("referenceLetterSelect");
+
+const referenceGrid =
+  document.getElementById("referenceGrid");
+
+const referencePreviousBtn =
+  document.getElementById("referencePreviousBtn");
+
+const referenceNextBtn =
+  document.getElementById("referenceNextBtn");
+
+const questionCountSetting =
+  document.getElementById("questionCountSetting");
+
+const scoreSection =
+  document.getElementById("scoreSection");
+
+const progressSection =
+  document.getElementById("progressSection");
+
+const restartSection =
+  document.getElementById("restartSection");
 
 const letterSetting =
   document.getElementById("letterSetting");
@@ -1773,6 +1888,27 @@ const referenceTable =
   document.getElementById("referenceTable");
 
 
+const referenceLetters =
+  Object.keys(chaudakhadi);
+
+const referenceForms = [
+  { suffix: "", english: "Ka" },
+  { suffix: "ा", english: "Kaa" },
+  { suffix: "ि", english: "Ki" },
+  { suffix: "ी", english: "Kee" },
+  { suffix: "ु", english: "Ku" },
+  { suffix: "ू", english: "Koo" },
+  { suffix: "े", english: "Ke" },
+  { suffix: "ै", english: "Kai" },
+  { suffix: "ो", english: "Ko" },
+  { suffix: "ौ", english: "Kau" },
+  { suffix: "ं", english: "Kam" },
+  { suffix: "ः", english: "Kah" },
+  { suffix: "ॅ", english: "Kya" },
+  { suffix: "ॉ", english: "Kaw" }
+];
+
+
 /* =========================================================
    STATE
 ========================================================= */
@@ -1782,6 +1918,8 @@ const state = {
   mode: "typing",
 
   selectedLetter: "क",
+
+  referenceLetter: "क",
 
   totalQuestions: 10,
 
@@ -2293,6 +2431,11 @@ function startMode(mode) {
     mode === "typing"
   ) {
 
+    questionCountSetting.classList.remove("d-none-custom");
+    scoreSection.classList.remove("d-none-custom");
+    progressSection.classList.remove("d-none-custom");
+    restartSection.classList.remove("d-none-custom");
+
     typingView.classList.remove(
       "d-none-custom"
     );
@@ -2309,7 +2452,7 @@ function startMode(mode) {
       "d-none-custom"
     );
 
-    referenceCard.classList.remove(
+    referenceCard.classList.add(
       "d-none-custom"
     );
 
@@ -2323,6 +2466,11 @@ function startMode(mode) {
   if (
     mode === "quiz"
   ) {
+
+    questionCountSetting.classList.remove("d-none-custom");
+    scoreSection.classList.remove("d-none-custom");
+    progressSection.classList.remove("d-none-custom");
+    restartSection.classList.remove("d-none-custom");
 
     typingView.classList.add(
       "d-none-custom"
@@ -2340,7 +2488,7 @@ function startMode(mode) {
       "d-none-custom"
     );
 
-    referenceCard.classList.remove(
+    referenceCard.classList.add(
       "d-none-custom"
     );
 
@@ -2354,6 +2502,11 @@ function startMode(mode) {
   if (
     mode === "words"
   ) {
+
+    questionCountSetting.classList.add("d-none-custom");
+    scoreSection.classList.add("d-none-custom");
+    progressSection.classList.add("d-none-custom");
+    restartSection.classList.remove("d-none-custom");
 
     typingView.classList.add(
       "d-none-custom"
@@ -2381,6 +2534,40 @@ function startMode(mode) {
 
   }
 
+
+  if (
+    mode === "reference"
+  ) {
+
+    questionCountSetting.classList.add("d-none-custom");
+    scoreSection.classList.add("d-none-custom");
+    progressSection.classList.add("d-none-custom");
+    restartSection.classList.add("d-none-custom");
+
+    typingView.classList.add(
+      "d-none-custom"
+    );
+
+    quizView.classList.add(
+      "d-none-custom"
+    );
+
+    wordView.classList.add(
+      "d-none-custom"
+    );
+
+    letterSetting.classList.add(
+      "d-none-custom"
+    );
+
+    referenceCard.classList.remove(
+      "d-none-custom"
+    );
+
+    renderReference();
+
+  }
+
 }
 
 
@@ -2399,6 +2586,10 @@ function updateMenu() {
   );
 
   menuWords.classList.remove(
+    "active"
+  );
+
+  menuReference.classList.remove(
     "active"
   );
 
@@ -2438,6 +2629,17 @@ function updateMenu() {
 
   }
 
+  if (
+    state.mode ===
+    "reference"
+  ) {
+
+    menuReference.classList.add(
+      "active"
+    );
+
+  }
+
 }
 
 
@@ -2471,6 +2673,18 @@ menuWords.addEventListener(
 
     startMode(
       "words"
+    );
+
+  }
+);
+
+
+menuReference.addEventListener(
+  "click",
+  () => {
+
+    startMode(
+      "reference"
     );
 
   }
@@ -3404,9 +3618,54 @@ letterSelect.addEventListener(
 
     updateReferenceTable();
 
-    startMode(
-      state.mode
-    );
+    if (state.mode !== "reference") {
+      startMode(state.mode);
+    }
+
+  }
+);
+
+
+referenceLetterSelect.addEventListener(
+  "change",
+  event => {
+
+    state.referenceLetter =
+      event.target.value;
+
+    renderReference();
+
+  }
+);
+
+
+referencePreviousBtn.addEventListener(
+  "click",
+  () => {
+
+    const currentIndex =
+      referenceLetters.indexOf(state.referenceLetter);
+
+    if (currentIndex > 0) {
+      state.referenceLetter = referenceLetters[currentIndex - 1];
+      renderReference();
+    }
+
+  }
+);
+
+
+referenceNextBtn.addEventListener(
+  "click",
+  () => {
+
+    const currentIndex =
+      referenceLetters.indexOf(state.referenceLetter);
+
+    if (currentIndex < referenceLetters.length - 1) {
+      state.referenceLetter = referenceLetters[currentIndex + 1];
+      renderReference();
+    }
 
   }
 );
@@ -3500,6 +3759,86 @@ function updateReferenceTable() {
 }
 
 
+function getReferenceKhadi(letter) {
+
+  const baseEnglish =
+    chaudakhadi[letter]?.[0]?.[1] || "Ka";
+
+  const englishPrefix =
+    baseEnglish.endsWith("a")
+      ? baseEnglish.slice(0, -1)
+      : baseEnglish;
+
+  return referenceForms.map(
+    form => ({
+      marathi: `${letter}${form.suffix}`,
+      english: form.english.replace(/^K/, englishPrefix)
+    })
+  );
+
+}
+
+
+function initializeReferenceDropdown() {
+
+  referenceLetterSelect.innerHTML = "";
+
+  referenceLetters.forEach(
+    letter => {
+
+      const option =
+        document.createElement("option");
+
+      option.value = letter;
+      option.textContent = letter;
+      referenceLetterSelect.appendChild(option);
+
+    }
+  );
+
+}
+
+
+function renderReference() {
+
+  const letter = state.referenceLetter;
+  const khadi = getReferenceKhadi(letter);
+
+  referenceHeading.textContent =
+    `${letter} ची १४ खडी`;
+
+  referenceLetterSelect.value = letter;
+  referenceGrid.innerHTML = "";
+
+  khadi.forEach(
+    (form, index) => {
+
+      const item = document.createElement("div");
+      item.className = "reference-syllable";
+      item.innerHTML = `
+        <span class="reference-syllable-number">${index + 1}</span>
+        <span class="reference-syllable-text">${form.marathi}</span>
+        <span class="reference-english">${form.english}</span>
+        <button type="button" class="btn btn-sm btn-outline-warning mt-2 reference-speak-btn" aria-label="${form.marathi} ऐका">🔊 ऐका</button>
+      `;
+      item.querySelector(".reference-speak-btn").addEventListener(
+        "click",
+        () => speakText(form.marathi, "mr-IN", 0.7)
+      );
+      referenceGrid.appendChild(item);
+
+    }
+  );
+
+  const currentIndex =
+    referenceLetters.indexOf(letter);
+
+  referencePreviousBtn.disabled = currentIndex <= 0;
+  referenceNextBtn.disabled = currentIndex >= referenceLetters.length - 1;
+
+}
+
+
 /* =========================================================
    RESTORE SETTINGS
 ========================================================= */
@@ -3524,6 +3863,7 @@ function registerServiceWorker() {
 function init() {
 
   initializeLetterDropdown();
+  initializeReferenceDropdown();
 
   letterSelect.value =
     state.selectedLetter;
@@ -3534,6 +3874,7 @@ function init() {
     );
 
   updateReferenceTable();
+  renderReference();
 
   registerServiceWorker();
 
